@@ -14,5 +14,74 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.item-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.overview {
+    width: 25%;
+    padding: 2.5%;
+    background-color: darkgoldenrod;
+    border-radius: 10px;
+}
+
+.drinks {
+    width: 70%;
+    padding-right: 2.5%;
+    padding-bottom: 2.5%;
+}
+
+.drink-options {
+    height: 50%;
+    background-color: darkslateblue;
+    padding: 2.5%;
+    font-size: 32px;
+    color: white;
+    border-radius: 10px;
+}
+
+.drink-size {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    background-color: darkslateblue;
+    padding: 2.5%;
+    margin-bottom: 2.5%;
+    border-radius: 10px;
+}
+
+.drink-img-box {
+    justify-content:center;
+    display:flex;
+    height: 100%;
+    width: 25%;
+}
+
+.drink-size-s {
+    order: 1;
+    width: 50%;
+}
+
+.drink-size-m {
+    order: 2;
+    width: 67.5%;
+}
+
+.drink-size-l {
+    order: 3;
+    width: 80%;
+}
+
+.drink-size-xl {
+    order: 4;
+    width: 100%;
 }
