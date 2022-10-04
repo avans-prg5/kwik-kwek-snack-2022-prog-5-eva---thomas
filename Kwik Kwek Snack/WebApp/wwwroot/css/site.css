@@ -31,16 +31,17 @@ body {
     padding: 2.5%;
     background-color: darkgoldenrod;
     border-radius: 10px;
+    font-size: 32px;
+    color: white;
 }
 
 .drinks {
     width: 70%;
     padding-right: 2.5%;
-    padding-bottom: 2.5%;
+    border-radius: 10px;
 }
 
 .drink-options {
-    height: 50%;
     background-color: darkslateblue;
     padding: 2.5%;
     font-size: 32px;
@@ -55,8 +56,8 @@ body {
     justify-content: center;
     background-color: darkslateblue;
     padding: 2.5%;
-    margin-bottom: 2.5%;
     border-radius: 10px;
+    margin-bottom: 2.5%;
 }
 
 .drink-img-box {
@@ -84,4 +85,25 @@ body {
 .drink-size-xl {
     order: 4;
     width: 100%;
+}
+
+.btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 32px;
+    color: white;
+    margin-top: 2.5%;
+}
+
+.btn-1 {
+    border-radius: 10px;
+    background-color: darkslateblue;
+    width: 25%;
+}
+
+.btn-2 {
+    border-radius: 10px;
+    background-color: darkgoldenrod;
+    width: 25%;
 }

@@ -31,8 +31,20 @@
     </section>
     <aside class="overview">
         <!--Overview-->
+        <p>Overzicht</p>
+        <p>Drankjes:</p>
+        <ul>
+            @foreach(Item drankje in ViewBag.Drinks){
+                <li>@drankje.Name</li>
+            }
+        </ul>
     </aside>
 </div>
 <footer>
     <!--Buttons-->
+    <section class="btn-div">
+        <button class="btn-1">Toevoegen</button>
+        <button class="btn-1">Naar snacks</button>
+        <button class="btn-2">Afronden</button>
+    </section>
 </footer>

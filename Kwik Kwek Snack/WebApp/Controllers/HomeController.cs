@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Xml.Linq;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -25,6 +26,11 @@ namespace WebApp.Controllers
 
         public IActionResult Drinks()
         {
+            var drinks = new List<Drink>();
+            var drink = new Drink();
+            drink.Name = "bepis";
+            drinks.Add(drink);
+            ViewBag.Drinks = drinks; //TODO: real data
             return View();
         }
 
