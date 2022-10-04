@@ -5,6 +5,10 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console App", "Console App\Console App.csproj", "{EDE0C953-BB33-40E3-AE37-D2ED8C7243EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KwikKwekSnack.Data", "KwikKwekSnack.Data\KwikKwekSnack.Data.csproj", "{7F8C7DD8-43BD-44FD-BA31-4C7C93A7A12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{1C1462D5-542F-45E2-82F4-1F3E49C0309C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EDE0C953-BB33-40E3-AE37-D2ED8C7243EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDE0C953-BB33-40E3-AE37-D2ED8C7243EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDE0C953-BB33-40E3-AE37-D2ED8C7243EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8C7DD8-43BD-44FD-BA31-4C7C93A7A12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8C7DD8-43BD-44FD-BA31-4C7C93A7A12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8C7DD8-43BD-44FD-BA31-4C7C93A7A12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8C7DD8-43BD-44FD-BA31-4C7C93A7A12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1462D5-542F-45E2-82F4-1F3E49C0309C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1462D5-542F-45E2-82F4-1F3E49C0309C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1462D5-542F-45E2-82F4-1F3E49C0309C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1462D5-542F-45E2-82F4-1F3E49C0309C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

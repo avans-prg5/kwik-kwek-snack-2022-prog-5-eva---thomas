@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    internal class Snack : Item
+    class Snack : Item
     {
         public Extra[] Extras { get; set; }
     }
