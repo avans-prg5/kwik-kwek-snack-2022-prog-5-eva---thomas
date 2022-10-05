@@ -107,3 +107,16 @@ body {
     background-color: darkgoldenrod;
     width: 25%;
 }
+
+.main-btn-alignment{
+    display: flex;
+    justify-content: center;
+}
+
+.main-btn{
+    border-radius: 10px;
+    background-color: darkslateblue;
+    width: 50%;
+    font-size: 40px;
+    color: white;
+}
