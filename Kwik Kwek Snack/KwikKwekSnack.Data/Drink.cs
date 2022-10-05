@@ -9,7 +9,7 @@ namespace KwikKwekSnack.Data
 {
     public class Drink : Item
     {
-        public Size Size { get; set; }
+        public String Size { get; set; }
         public bool Ice { get; set; }
         public bool Straw { get; set; }
     }

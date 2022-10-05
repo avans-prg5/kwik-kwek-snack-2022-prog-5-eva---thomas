@@ -31,14 +31,14 @@ namespace KwikKwekSnack.Data
         {
             //Seed data
             modelBuilder.Entity<Drink>().HasData(
-                new Drink() { Name = "Coca Cola", Description = "Coca Cola", ImageURL = "~/img/coke.png", Price = 1.5f, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Fanta", Description = "Fanta", ImageURL = "~/img/fanta.png", Price = 1.5f, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Pepsi", Description = "Pepsi Cola", ImageURL = "~/img/pepsi.png", Price = 1.5f, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Coca Cola Zero", Description = "Coca Cola Zero", ImageURL = "~/img/coke0.png", Price = 1.5f, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Chocomel", Description = "Chocomel", ImageURL = "~/img/choccy.png", Price = 1, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Fristi", Description = "Fristi", ImageURL = "~/img/fristi.png", Price = 1, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Spa Rood", Description = "Sprankelend water", ImageURL = "~/img/kutwater.png", Price = 1, Ice = false, Size = null, Straw = false },
-                new Drink() { Name = "Spa Blauw", Description = "Water", ImageURL = "~/img/water.png", Price = 1, Ice = false, Size = null, Straw = false }
+                new Drink() { Name = "Coca Cola", Description = "Coca Cola", ImageURL = "~/img/coke.png", Price = 1.5f, Ice = false, Size = "S", Straw = false },
+                new Drink() { Name = "Fanta", Description = "Fanta", ImageURL = "~/img/fanta.png", Price = 1.5f, Ice = false, Size = "M", Straw = false },
+                new Drink() { Name = "Pepsi", Description = "Pepsi Cola", ImageURL = "~/img/pepsi.png", Price = 1.5f, Ice = false, Size = "L", Straw = false },
+                new Drink() { Name = "Coca Cola Zero", Description = "Coca Cola Zero", ImageURL = "~/img/coke0.png", Price = 1.5f, Ice = false, Size = "XL", Straw = false },
+                new Drink() { Name = "Chocomel", Description = "Chocomel", ImageURL = "~/img/choccy.png", Price = 1, Ice = false, Size = "M", Straw = false },
+                new Drink() { Name = "Fristi", Description = "Fristi", ImageURL = "~/img/fristi.png", Price = 1, Ice = false, Size = "L", Straw = false },
+                new Drink() { Name = "Spa Rood", Description = "Sprankelend water", ImageURL = "~/img/kutwater.png", Price = 1, Ice = false, Size = "S", Straw = false },
+                new Drink() { Name = "Spa Blauw", Description = "Water", ImageURL = "~/img/water.png", Price = 1, Ice = false, Size = "S", Straw = false }
                 ); ;
 
             modelBuilder.Entity<Snack>().HasData(
