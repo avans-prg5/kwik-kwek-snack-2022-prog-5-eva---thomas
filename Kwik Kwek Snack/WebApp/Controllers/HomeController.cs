@@ -8,6 +8,7 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        Order _currentOrder = null;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -31,6 +32,7 @@ namespace WebApp.Controllers
             drink.Name = "bepis";
             drinks.Add(drink);
             ViewBag.Drinks = drinks; //TODO: real data
+            ViewBag.CurrentOrder = _currentOrder;
             return View();
         }
 
@@ -38,6 +40,11 @@ namespace WebApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public void CreateNewOrder()
+        {
+            _currentOrder = new Order();
         }
     }
 }

@@ -47,7 +47,6 @@ namespace KwikKwekSnack.Data
                 new Snack() { Name = "Frikandel Speciaal", Description = "Frikandel Speciaal", ImageURL = "~/img/speciaal.png", Price = 2.1f },
                 new Snack() { Name = "Kroket", Description = "Kroket", ImageURL = "~/img/kroket.png", Price = 1.7f },
                 new Snack() { Name = "Kaassoufflé", Description = "Kaassoufflé", ImageURL = "~/img/kaas.png", Price = 1.85f },
-                new Snack() { Name = "Nasischijf", Description = "Nasischijf", ImageURL = "~/img/nasi.png", Price = 1.95f },
                 new Snack() { Name = "Bamischijf", Description = "Bamischijf", ImageURL = "~/img/bami.png", Price = 1.85f },
                 new Snack() { Name = "Kipnuggets", Description = "Kipnuggets", ImageURL = "~/img/nuggets.png", Price = 2.05f },
                 new Snack() { Name = "Hamburger", Description = "Hamburger", ImageURL = "~/img/burger.png", Price = 3.55f },

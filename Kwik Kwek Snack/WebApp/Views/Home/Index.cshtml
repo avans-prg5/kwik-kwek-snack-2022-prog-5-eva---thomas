@@ -1,8 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-}
+    using (Html.BeginForm("CreateNewOrder", "Home")){
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    }
+}
+<a class="main-btn-alignment" href="/Home/Drinks">
+    <button class="main-btn" onclick="CreateNewOrder">
+        Klik hier om een bestelling aan te maken
+    </button>
+</a>
+
