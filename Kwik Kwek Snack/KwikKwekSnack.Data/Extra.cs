@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    enum Extra
+    public class Extra
     {
-        Cheese,
-        Onion,
-        Lettuce,
-        Tomato
+        public enum option
+        { 
+            Cheese,
+            Onion,
+            Lettuce,
+            Tomato
+        }
     }
 }

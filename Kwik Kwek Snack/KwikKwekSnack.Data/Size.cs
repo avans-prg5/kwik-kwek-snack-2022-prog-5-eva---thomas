@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    enum Size
+    public class Size
     {
-        S,
-        M,
-        L,
-        XL
+        public enum Sizes
+        {
+
+
+            S,
+            M,
+            L,
+            XL
+        }
     }
 }

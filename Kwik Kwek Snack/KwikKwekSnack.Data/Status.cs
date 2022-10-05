@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    enum Status
+    public class Status
     {
-        Waiting,
-        BeingPrepared,
-        Ready
+        public enum Statuses
+        {
+            Waiting,
+            BeingPrepared,
+            Ready
+        }
     }
 }

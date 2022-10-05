@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    class Drink : Item
+    public class Drink : Item
     {
         public Size Size { get; set; }
         public bool Ice { get; set; }
