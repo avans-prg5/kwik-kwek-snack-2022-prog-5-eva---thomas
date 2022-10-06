@@ -1,9 +1,17 @@
-﻿using KwikKwekSnack.Data;
+﻿using Console_App;
+using KwikKwekSnack.Data;
+using Microsoft.IdentityModel.Tokens;
+using System.Runtime.CompilerServices;
 
 public class Program
 {
     static void Main(string[] args)
     {
+
+        ConsoleHandler handler = new ConsoleHandler();
+
+
+
 
         using (var context = new SnackContext())
         {
@@ -15,4 +23,6 @@ public class Program
         }
         //DisconnectedUpdateVoorbeeld1();//update bewoners in woning id 4
     }
+
 }
+   
