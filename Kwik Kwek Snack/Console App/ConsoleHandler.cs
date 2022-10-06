@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using KwikKwekSnack.Data;
 
 namespace Console_App
 {
@@ -60,10 +61,67 @@ namespace Console_App
             Console.WriteLine("ORDERNR |  ORDER ITEM 1, ORDER ITEM 2, ORDER ITEM 3, ORDER ITEM 4");
         }
 
-        private static void GetNextResult()
+        private static void PrintToBePreparedOrders(List<Order> orders)
         {
-            throw new NotImplementedException();
+            foreach (Order order in orders)
+            {
+                Console.Write(order.OrderID + " | ");
+                if (order.TakeAway)
+                {
+                    Console.Write("TAKE |");
+                }
+                else
+                {
+                    Console.Write("STAY |");
+                }
+                if (order.Snacks.Length > 0)
+                {
+                    Console.Write("|SNACKS[");
+                    foreach (Snack snack in order.Snacks)
+                    {
+                        Console.Write(snack.Name);
+                        if (snack.Extras.Length > 0)
+                        {
+                            Console.Write("{");
+                            foreach (Extra extra in snack.Extras)
+                            {
+                                Console.Write(extra.Extras + ", ");
+                            }
+                            Console.Write("}");
+                        }
+                        Console.Write(",");
+
+                    }
+                    Console.Write("]");
+
+                }
+                if (order.Drinks.Length > 0)
+                {
+                    Console.Write("DRINKS[");
+                    foreach (Drink drink in order.Drinks)
+                    {
+                        Console.Write(drink.Name);
+                        if (drink.Ice || drink.Straw)
+                        {
+                            Console.Write("{");
+                            if (drink.Ice)
+                            {
+                                Console.Write("ice, ");
+                            }
+                            if (drink.Straw)
+                            {
+                                Console.Write("straw ");
+                            }
+                            Console.Write("}");
+                        }
+                    }
+                    Console.WriteLine("]");
+
+                }
+            }
         }
+
+
 
         public static void GenerateVisual()
         {
