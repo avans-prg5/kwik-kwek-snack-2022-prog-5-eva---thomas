@@ -27,14 +27,14 @@ namespace KwikKwekSnack.Data
             return _context.Items.Where(i => i.Name.Equals(name)).FirstOrDefault();
         }
 
-        public Size GetSize(string size)
-        {
-            return _context.Sizes.Where(s => s.sizes == size).FirstOrDefault();
-        }
-
         public Order GetOrder(int id)
         {
             return _context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
+        }
+
+        public List<Extra> GetExtra(ExtraName name)
+        {
+            return _context.Extras.Where(e => e.Name.Equals(name.ToString())).ToList();
         }
     }
 }

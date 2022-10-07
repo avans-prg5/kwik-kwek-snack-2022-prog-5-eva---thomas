@@ -19,4 +19,12 @@ namespace KwikKwekSnack.Data
         public bool ice { get; set; }
         public Size size { get; set; }
     }
+
+    public enum Size
+    {
+        S,
+        M,
+        L,
+        XL
+    }
 }

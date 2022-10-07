@@ -14,4 +14,11 @@ namespace KwikKwekSnack.Data
         public List<DrinkInOrder> Drinks { get; set; }
         public List<SnackInOrder> Snacks { get; set; }
     }
+
+    public enum Status
+    {
+        Wachtrij,
+        Bereiding,
+        Gereed
+    }
 }
