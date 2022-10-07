@@ -10,10 +10,11 @@ namespace Console_App
 {
     internal class ConsoleHandler
     {
-        private static System.Timers.Timer timer;
+        MainController MC;
 
-        public ConsoleHandler()
+        public ConsoleHandler(MainController mc)
         {
+            MC = mc;
             for (int i = 0; i < 60; i++)
             {
                 Console.Write("█");
@@ -22,19 +23,6 @@ namespace Console_App
 
             Console.Clear();
 
-        }
-
-
-        private void SetTimer()
-        {
-
-            Console.WriteLine("timer was set");
-            // Create a timer with a two second interval.
-            timer = new System.Timers.Timer(2000);
-            // Hook up the Elapsed event for the timer. 
-           // timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true;
-            timer.Enabled = true;
         }
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
@@ -54,11 +42,10 @@ namespace Console_App
             {
                 Console.WriteLine("");
             }
-            
         }
         private static void GetNextMockResult()
         {
-            Console.WriteLine("ORDERNR |  ORDER ITEM 1, ORDER ITEM 2, ORDER ITEM 3, ORDER ITEM 4");
+            Console.WriteLine("ORDERNR | TAKE | DRINK<SMALL>{ICE}, ORDER ITEM 2, ORDER ITEM 3, ORDER ITEM 4");
         }
 
         private static void PrintToBePreparedOrders(List<Order> orders)
@@ -74,58 +61,65 @@ namespace Console_App
                 {
                     Console.Write("STAY |");
                 }
-                if (order.Snacks.Length > 0)
-                {
-                    Console.Write("|SNACKS[");
-                    foreach (Snack snack in order.Snacks)
-                    {
-                        Console.Write(snack.Name);
-                        if (snack.Extras.Length > 0)
-                        {
-                            Console.Write("{");
-                            foreach (Extra extra in snack.Extras)
-                            {
-                                Console.Write(extra.Extras + ", ");
-                            }
-                            Console.Write("}");
-                        }
-                        Console.Write(",");
+                //if (order.Snacks.Length > 0)
+                //{
+                //    Console.Write("|SNACKS[");
+                //    foreach (Snack snack in order.Snacks)
+                //    {
+                //        Console.Write(snack.Name);
+                //        if (snack.Extras.Length > 0)
+                //        {
+                //            Console.Write("{");
+                //            foreach (Extra extra in snack.Extras)
+                //            {
+                //                Console.Write(extra.Extras + ", ");
+                //            }
+                //            Console.Write("}");
+                //        }
+                //        Console.Write(",");
 
-                    }
-                    Console.Write("]");
+                //    }
+                //    Console.Write("]");
 
-                }
-                if (order.Drinks.Length > 0)
-                {
-                    Console.Write("DRINKS[");
-                    foreach (Drink drink in order.Drinks)
-                    {
-                        Console.Write(drink.Name);
-                        if (drink.Ice || drink.Straw)
-                        {
-                            Console.Write("{");
-                            if (drink.Ice)
-                            {
-                                Console.Write("ice, ");
-                            }
-                            if (drink.Straw)
-                            {
-                                Console.Write("straw ");
-                            }
-                            Console.Write("}");
-                        }
-                    }
-                    Console.WriteLine("]");
+                //}
+                //if (order.Drinks.Length > 0)
+                //{
+                //    Console.Write("DRINKS[");
+                //    foreach (Drink drink in order.Drinks)
+                //    {
+                //        Console.Write(drink.Name + "<"+drink.Size+">");
+                //        if (drink.Ice || drink.Straw)
+                //        {
+                //            Console.Write("{");
+                //            if (drink.Ice)
+                //            {
+                //                Console.Write("ice, ");
+                //            }
+                //            if (drink.Straw)
+                //            {
+                //                Console.Write("straw ");
+                //            }
+                //            Console.Write("}");
+                //        }
+                //    }
+                //    Console.WriteLine("]");
 
-                }
+                //}
             }
         }
 
+        private static void PrintHeader()
+        {
 
+            Separator();
+
+        }
 
         public static void GenerateVisual()
         {
             throw new NotImplementedException();
+           
+            //PrintToBePreparedOrders();
         }
     }
 }

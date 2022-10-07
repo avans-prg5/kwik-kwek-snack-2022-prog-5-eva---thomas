@@ -8,7 +8,7 @@ public class Program
     static void Main(string[] args)
     {
 
-        ConsoleHandler handler = new ConsoleHandler();
+        new MainController();
 
 
 
