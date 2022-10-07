@@ -15,9 +15,7 @@ namespace KwikKwekSnack.Data
         public DbSet<DrinkInOrder> Drinks { get; set; } = null!;
         public DbSet<Extra> Extras { get; set; } = null!;
         public DbSet<Order> Orders { get; set; } = null!;
-        public DbSet<Size> Sizes { get; set; } = null!;
         public DbSet<SnackInOrder> Snacks { get; set; } = null!;
-        public DbSet<Status> Statuses { get; set; } = null!;
         public DbSet<Item> Items { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -80,23 +78,10 @@ namespace KwikKwekSnack.Data
                 );
 
             modelBuilder.Entity<Extra>().HasData(
-                new Extra() { Name = "Kaas", Price = 0.5f },
-                new Extra() { Name = "Ui", Price = 0.5f },
-                new Extra() { Name = "Sla", Price = 0.5f },
-                new Extra() { Name   = "Tomaat", Price = 0.5f }
-                );
-
-            modelBuilder.Entity<Size>().HasData(
-                new Size() { sizes = "S" },
-                new Size() { sizes = "M" },
-                new Size() { sizes = "L" },
-                new Size() { sizes = "XL" }
-                );
-
-            modelBuilder.Entity<Status>().HasData(
-                new Status() { statuses = "Wachtrij" },
-                new Status() { statuses = "Wordt bereid" },
-                new Status() { statuses = "Gereed" }
+                new Extra() { Name = ExtraName.Kaas, Price = 0.5f },
+                new Extra() { Name = ExtraName.Ui, Price = 0.5f },
+                new Extra() { Name = ExtraName.Sla, Price = 0.5f },
+                new Extra() { Name = ExtraName.Tomaat, Price = 0.5f }
                 );
 
             List<DrinkInOrder> drinkList = new List<DrinkInOrder>() {
@@ -105,8 +90,18 @@ namespace KwikKwekSnack.Data
                     Drink = _repo.GetItem("Coca Cola"),
                     ice = true,
                     straw = false,
-                    size = _repo.GetSize("S"),
-                    Order = _repo.GetOrder(1);
+                    size = Size.S,
+                    Order = _repo.GetOrder(1)
+                }
+            };
+
+            List<SnackInOrder> snackList = new List<SnackInOrder>()
+            {
+                new SnackInOrder()
+                {
+                    Snack = _repo.GetItem("Kroket"),
+                    Order = _repo.GetOrder(1),
+                    Extra = _repo.GetExtra(ExtraName.Kaas)
                 }
             };
 
@@ -114,7 +109,10 @@ namespace KwikKwekSnack.Data
                 new Order()
                 {
                     OrderID = 1,
-                    Drinks = drinkList
+                    Drinks = drinkList,
+                    Snacks = snackList,
+                    Status = Status.Bereiding,
+                    TakeAway = false
                 }
                 );
         }
