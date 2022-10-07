@@ -12,14 +12,29 @@ namespace KwikKwekSnack.Data
 
         //Methods to get stuff out of database
 
-        public List<Drink> GetDrinks()
+        public List<Item> GetDrinks()
         {
-            return _context.Drinks.ToList();
+            return _context.Items.Where(i => i.IsDrink).ToList();
         }
 
-        public List<Snack> GetSnacks()
+        public List<Item> GetSnacks()
         {
-            return _context.Snacks.ToList();
+            return _context.Items.Where(i => !i.IsDrink).ToList();
+        }
+
+        public Item GetItem(string name)
+        {
+            return _context.Items.Where(i => i.Name.Equals(name)).FirstOrDefault();
+        }
+
+        public Order GetOrder(int id)
+        {
+            return _context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
+        }
+
+        public List<Extra> GetExtra(ExtraName name)
+        {
+            return _context.Extras.Where(e => e.Name.Equals(name.ToString())).ToList();
         }
     }
 }

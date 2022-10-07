@@ -11,6 +11,15 @@ namespace KwikKwekSnack.Data
     public class Extra
     {
         [Key]
-        public string Extras { get; set; }
+        public ExtraName Name { get; set; }
+        public float Price { get; set; }
+    }
+
+    public enum ExtraName
+    {
+        Kaas,
+        Ui,
+        Sla,
+        Tomaat
     }
 }
