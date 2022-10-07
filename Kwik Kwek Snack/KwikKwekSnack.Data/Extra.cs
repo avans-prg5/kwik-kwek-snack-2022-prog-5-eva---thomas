@@ -11,6 +11,7 @@ namespace KwikKwekSnack.Data
     public class Extra
     {
         [Key]
-        public string Extras { get; set; }
+        public string Name { get; set; }
+        public float Price { get; set; }
     }
 }

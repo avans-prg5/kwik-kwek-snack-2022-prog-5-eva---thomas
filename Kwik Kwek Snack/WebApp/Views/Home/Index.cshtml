@@ -1,12 +1,12 @@
-﻿@{
+﻿@using WebApp.Controllers;
+@{
     ViewData["Title"] = "Home Page";
-    using (Html.BeginForm("CreateNewOrder", "Home")){
-
-    }
+    HomeController controller = ViewBag.Controller;
 }
 <a class="main-btn-alignment" href="/Home/Drinks">
-    <button class="main-btn" onclick="CreateNewOrder">
+    <button class="main-btn">
         Klik hier om een bestelling aan te maken
+        @ViewBag.Order = new Order();
     </button>
 </a>
 
