@@ -6,5 +6,6 @@
         public string Description { get; set; }
         public string ImageURL { get; set; }
         public int Price { get; set; }
+        public bool IsDrink { get; set; }
     }
 }
