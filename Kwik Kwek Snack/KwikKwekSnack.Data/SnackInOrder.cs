@@ -18,9 +18,10 @@ namespace KwikKwekSnack.Data
         public string SnackName { get; set; }
         public Item Snack { get; set; }
         [Key]
-        public int OrderID { get; set; }
+        public int OrderId { get; set; }
         public Order Order { get; set; }
         public List<Extra> Extra { get; set; }
+        public int SnackId { get; set; }
         public int Amount { get; set; }
     }
 }

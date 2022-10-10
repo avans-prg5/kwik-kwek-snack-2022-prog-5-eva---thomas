@@ -11,6 +11,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KwikKwekSnack.Data", "KwikKwekSnack.Data\KwikKwekSnack.Data.csproj", "{7F8C7DD8-43BD-44FD-BA31-4C7C93A7A12C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{1C1462D5-542F-45E2-82F4-1F3E49C0309C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EDE0C953-BB33-40E3-AE37-D2ED8C7243EE} = {EDE0C953-BB33-40E3-AE37-D2ED8C7243EE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

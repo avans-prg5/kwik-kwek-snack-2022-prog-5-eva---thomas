@@ -36,5 +36,28 @@ namespace KwikKwekSnack.Data
         {
             return _context.Extras.Where(e => e.Name.Equals(name.ToString())).ToList();
         }
+
+        public Order GetLastCompleted()
+        {
+            return _context.Orders.OrderBy(o => o.OrderID).Where(o => o.Status.Equals(Status.Gereed)).LastOrDefault();
+
+        }
+
+        public List<Order> GetOrdersInPreparation()
+        {
+            return _context.Orders.OrderBy(o => o.OrderID).Where(o => o.Status.Equals(Status.Bereiding)).ToList(); ;
+        }
+
+        public List<Order> GetOrdersInQueue()
+        {
+            return _context.Orders.OrderBy(o => o.OrderID).Where(o => o.Status.Equals(Status.Wachtrij)).ToList(); ;
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            _context.Update(order);
+            _context.SaveChanges();
+        }
     }
+
 }
