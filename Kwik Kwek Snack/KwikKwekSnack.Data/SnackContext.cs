@@ -10,7 +10,7 @@ namespace KwikKwekSnack.Data
 {
     public class SnackContext : DbContext
     {
-        SnackRepo _repo = new SnackRepo();
+        //  SnackRepo _repo = new SnackRepo();
 
         public DbSet<DrinkInOrder> Drinks { get; set; } = null!;
         public DbSet<Extra> Extras { get; set; } = null!;
@@ -32,7 +32,7 @@ namespace KwikKwekSnack.Data
         {
             //Linked tables
             modelBuilder.Entity<DrinkInOrder>()
-                .HasKey(t => new {t.OrderID, t.Drink});
+                .HasKey(t => new {t.OrderId, t.DrinkId});
 
             modelBuilder.Entity<DrinkInOrder>()
                 .HasOne(pt => pt.Drink)
@@ -42,10 +42,10 @@ namespace KwikKwekSnack.Data
             modelBuilder.Entity<DrinkInOrder>()
                 .HasOne(pt => pt.Order)
                 .WithMany(p => p.Drinks)
-                .HasForeignKey(pt => pt.OrderID);
+                .HasForeignKey(pt => pt.OrderId);
 
             modelBuilder.Entity<SnackInOrder>()
-                .HasKey(t => new { t.OrderID, t.Snack });
+                .HasKey(t => new { t.OrderId, t.SnackId });
 
             modelBuilder.Entity<SnackInOrder>()
                 .HasOne(pt => pt.Snack)
@@ -55,7 +55,7 @@ namespace KwikKwekSnack.Data
             modelBuilder.Entity<SnackInOrder>()
                 .HasOne(pt => pt.Order)
                 .WithMany(p => p.Snacks)
-                .HasForeignKey(pt => pt.OrderID);
+                .HasForeignKey(pt => pt.OrderId);
 
             //Seed data
             modelBuilder.Entity<Item>().HasData(
@@ -84,37 +84,37 @@ namespace KwikKwekSnack.Data
                 new Extra() { Name = ExtraName.Tomaat, Price = 0.5f }
                 );
 
-            List<DrinkInOrder> drinkList = new List<DrinkInOrder>() {
-                new DrinkInOrder()
-                {
-                    Drink = _repo.GetItem("Coca Cola"),
-                    ice = true,
-                    straw = false,
-                    size = Size.S,
-                    Order = _repo.GetOrder(1)
-                }
-            };
+            //List<DrinkInOrder> drinkList = new List<DrinkInOrder>() {
+            //    new DrinkInOrder()
+            //    {
+            //        Drink = _repo.GetItem("Coca Cola"),
+            //        ice = true,
+            //        straw = false,
+            //        size = Size.S,
+            //        Order = _repo.GetOrder(1)
+            //    }
+            //};
 
-            List<SnackInOrder> snackList = new List<SnackInOrder>()
-            {
-                new SnackInOrder()
-                {
-                    Snack = _repo.GetItem("Kroket"),
-                    Order = _repo.GetOrder(1),
-                    Extra = _repo.GetExtra(ExtraName.Kaas)
-                }
-            };
+            //List<SnackInOrder> snackList = new List<SnackInOrder>()
+            //{
+            //    new SnackInOrder()
+            //    {
+            //        Snack = _repo.GetItem("Kroket"),
+            //        Order = _repo.GetOrder(1),
+            //        Extra = _repo.GetExtra(ExtraName.Kaas)
+            //    }
+            //};
 
-            modelBuilder.Entity<Order>().HasData(
-                new Order()
-                {
-                    OrderID = 1,
-                    Drinks = drinkList,
-                    Snacks = snackList,
-                    Status = Status.Bereiding,
-                    TakeAway = false
-                }
-                );
+            //modelBuilder.Entity<Order>().HasData(
+            //    new Order()
+            //    {
+            //        OrderID = 1,
+            //        Drinks = drinkList,
+            //        Snacks = snackList,
+            //        Status = Status.Bereiding,
+            //        TakeAway = false
+            //    }
+            //    );
         }
     }
 }

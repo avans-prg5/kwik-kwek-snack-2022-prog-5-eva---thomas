@@ -13,11 +13,12 @@ namespace KwikKwekSnack.Data
         public string DrinkName { get; set; }
         public Item Drink { get; set; }
         [Key]
-        public int OrderID { get; set; }
+        public int OrderId { get; set; }
         public Order Order { get; set; }
         public bool straw { get; set; }
         public bool ice { get; set; }
         public Size size { get; set; }
+        public int DrinkId { get; set; }
     }
 
     public enum Size
