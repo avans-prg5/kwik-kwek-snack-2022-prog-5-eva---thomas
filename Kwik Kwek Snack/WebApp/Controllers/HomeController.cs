@@ -27,14 +27,21 @@ namespace WebApp.Controllers
 
         public IActionResult Drinks()
         {
-            var drinks = new List<Drink>();
-            var drink = new Drink();
-            drink.Name = "bepis";
+            var drinks = new List<DrinkInOrder>();
+            var drink = new DrinkInOrder();
+            drink.Drink = new Item() { Name = "bepis" };
+            _currentOrder = new Order();
             drinks.Add(drink);
-            ViewBag.Drinks = drinks; //TODO: real data
+            ViewBag.Drinks = new List<Item> { drink.Drink }; //TODO: real data
             ViewBag.CurrentOrder = _currentOrder;
-            return View();
+            return View(new DrinkInOrder());
         }
+
+        /*public IActionResult Drinks(DrinkInOrder drink)
+        {
+            _currentOrder.Drinks.Add(drink);
+            return View();
+        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

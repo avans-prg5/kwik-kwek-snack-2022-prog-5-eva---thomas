@@ -1,9 +1,9 @@
 ﻿namespace WebApp.Models
 {
-    enum Status
+    public enum Status
     {
-        Waiting,
-        BeingPrepared,
-        Ready
+        Wachtrij,
+        Bereiding,
+        Gereed
     }
 }
