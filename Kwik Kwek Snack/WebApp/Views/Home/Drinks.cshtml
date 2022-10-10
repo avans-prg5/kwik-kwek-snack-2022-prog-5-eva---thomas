@@ -1,22 +1,49 @@
-﻿@{
+﻿@model WebApp.Models.DrinkInOrder
+@{
     ViewData["Title"] = "Drinks";
 }
 
-<div class="item-overview">
+<form asp-action="Drinks">
+    <div class="item-overview">
         <section class="drinks">
             <div class="drink-size">
                 <!--Pictures of drinks-->
                 <div class="drink-img-box">
-                    <img src="~/img/placeholder.jpeg" class="drink-size-s" />
+                    <img src="~/img/placeholder.jpeg"
+                         class="drink-size-s" />
+                    <input name="Drink"
+                           type="radio"
+                           src="~/img/placeholder.jpeg"
+                           asp-for="Size"
+                           value="M" />
                 </div>
                 <div class="drink-img-box">
-                    <img src="~/img/placeholder.jpeg" class="drink-size-m" />
+                    <img src="~/img/placeholder.jpeg"
+                         class="drink-size-m" />
+                    <input 
+                        name="Drink" 
+                        type="radio"
+                           src="~/img/placeholder.jpeg"
+                           asp-for="Size" 
+                        value="M" />
                 </div>
                 <div class="drink-img-box">
-                    <img src="~/img/placeholder.jpeg" class="drink-size-l" />
+                    <img src="~/img/placeholder.jpeg"
+                         class="drink-size-l" />
+                    <input name="Drink"
+                           type="radio"
+                           src="~/img/placeholder.jpeg"
+                           asp-for="Size"
+                           value="M" />
                 </div>
                 <div class="drink-img-box">
-                    <img src="~/img/placeholder.jpeg" class="drink-size-xl" />
+                    <img src="~/img/placeholder.jpeg"
+                         class="drink-size-xl" />
+                    <input name="Drink"
+                           type="radio"
+                           src="~/img/placeholder.jpeg"
+                           asp-for="Size"
+                           value="M" />
                 </div>
             </div>
             <div class="drink-options">
@@ -24,27 +51,29 @@
                 <p>Opties</p>
 
                 <ul>
-                    <li>Ijs</li>
-                    <li>Plastic rietje</li>
+                    <input type="checkbox" asp-for="ice">Ijs</input>
+                    <input type="checkbox" asp-for="straw">Plastic rietje</input>
                 </ul>
             </div>
         </section>
-    <aside class="overview">
-        <!--Overview-->
-        <p>Overzicht</p>
-        <p>Drankjes:</p>
-        <ul>
-            @foreach(Item drankje in ViewBag.Drinks){
-                <li>@drankje.Name</li>
-            }
-        </ul>
-    </aside>
-</div>
-<footer>
-    <!--Buttons-->
-    <section class="btn-div">
-        <button class="btn-1">Toevoegen</button>
-        <button class="btn-1">Naar snacks</button>
-        <button class="btn-2">Afronden</button>
-    </section>
-</footer>
+        <aside class="overview">
+            <!--Overview-->
+            <p>Overzicht</p>
+            <p>Drankjes:</p>
+            <ul>
+               @* @foreach (DrinkInOrder drankje in ViewBag.Drinks)
+                {
+                    <li>@drankje.Drink.Name</li>
+                }*@
+            </ul>
+        </aside>
+    </div>
+    <footer>
+        <!--Buttons-->
+        <section class="btn-div">
+            <input type="submit" class="btn-1">Toevoegen</input>
+            <button class="btn-1">Naar snacks</button>
+            <button class="btn-2">Afronden</button>
+        </section>
+    </footer>
+</form>

@@ -61,6 +61,8 @@ body {
 }
 
 .drink-img-box {
+    display: flex;
+    flex-direction: column;
     justify-content:center;
     display:flex;
     height: 100%;
