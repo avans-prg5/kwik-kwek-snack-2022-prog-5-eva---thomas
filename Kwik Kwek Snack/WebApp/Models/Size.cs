@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Models
 {
-    enum Size
+    public enum Size
     {
         S,
         M,

@@ -22,5 +22,6 @@ namespace KwikKwekSnack.Data
         public Order Order { get; set; }
         public List<Extra> Extra { get; set; }
         public int SnackId { get; set; }
+        public int Amount { get; set; }
     }
 }

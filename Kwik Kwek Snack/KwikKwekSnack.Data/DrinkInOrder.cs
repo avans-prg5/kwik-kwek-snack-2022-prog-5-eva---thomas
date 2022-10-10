@@ -18,7 +18,8 @@ namespace KwikKwekSnack.Data
         public bool straw { get; set; }
         public bool ice { get; set; }
         public Size size { get; set; }
-        public int DrinkId { get; set; }
+        public int DrinkId { get; set}
+        public int Amount { get; set; }
     }
 
     public enum Size
