@@ -41,6 +41,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Snacks(SnackInOrder snack)
         {
+            snack.Order = _currentOrder;
             _currentOrder.Snacks.Add(snack);
             return View();
         }

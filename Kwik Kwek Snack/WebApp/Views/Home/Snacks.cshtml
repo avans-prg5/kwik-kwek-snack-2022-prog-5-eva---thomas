@@ -8,15 +8,20 @@
 
 <div class="item-overview">
     <section class="drinks">
-        <form>
+        <form asp-action="Snacks">
             <div class="snack-size">
                 @foreach (KwikKwekSnack.Data.Item snack in _repo.GetSnacks())
                 {
                     <div class="snack-img-box">
                         <img src="~/img/@snack.ImageURL" class="snack-img" />
+                        <input name="Snack"
+                           type="radio"
+                           asp-for="Snack"
+                           value="@snack" />
                     </div>
                 }
             </div>
+            <input type="submit" class="btn-1">Toevoegen</input>
         </form>
     </section>
     <aside class="overview">
