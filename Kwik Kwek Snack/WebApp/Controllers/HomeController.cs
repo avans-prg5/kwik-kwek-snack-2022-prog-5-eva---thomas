@@ -26,16 +26,22 @@ namespace WebApp.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Drinks()
-        {
-            return View(new DrinkInOrder());
-        }
+        public IActionResult Drinks() => View(new DrinkInOrder());
 
         [HttpPost]
         public IActionResult Drinks(DrinkInOrder drink)
         {
             _currentOrder.Drinks.Add(drink);
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Snacks() => View(new SnackInOrder());
+
+        [HttpPost]
+        public IActionResult Snacks(SnackInOrder snack)
+        {
+            _currentOrder.Snacks.Add(snack);
             return View();
         }
 

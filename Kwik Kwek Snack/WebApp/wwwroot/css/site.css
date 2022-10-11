@@ -122,3 +122,30 @@ body {
     font-size: 40px;
     color: white;
 }
+
+.snack-img-box {
+    display: flex;
+    justify-content: center;
+    margin: 2.5%;
+}
+
+.snack-img {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.snack-size {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    background-color: darkslateblue;
+    justify-content: space-evenly;
+    padding: 2.5%;
+    border-radius: 10px;
+    margin-bottom: 2.5%;
+}
