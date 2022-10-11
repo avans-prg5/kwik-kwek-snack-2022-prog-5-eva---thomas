@@ -14,10 +14,7 @@
                 {
                     <div class="snack-img-box">
                         <img src="~/img/@snack.ImageURL" class="snack-img" />
-                        <input name="Snack"
-                           type="radio"
-                           asp-for="Snack"
-                           value="@snack" />
+                        @Html.RadioButtonFor(model => model.SnackName, snack.Name) @snack.Name
                     </div>
                 }
             </div>
