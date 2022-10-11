@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace KwikKwekSnack.Data
 {
@@ -10,6 +11,8 @@ namespace KwikKwekSnack.Data
         public string ImageURL { get; set; }
         public float Price { get; set; }
         public bool IsDrink { get; set; }
+        [NotNull]
+        public bool IsAvailable { get; set; }
         public virtual List<DrinkInOrder> Drinks { get; set; }
         public virtual List<SnackInOrder> Snacks { get; set; }
     }
