@@ -17,10 +17,27 @@ namespace KwikKwekSnack.Data
         {
             return _context.Items.Where(i => i.IsDrink).ToList();
         }
+        public List<Item> GetAvailableDrinks()
+        {
+            return _context.Items.Where(i => i.IsDrink).Where(i => i.IsAvailable).ToList();
+        }
+        public List<Item> GetUnavailableDrinks()
+        {
+            return _context.Items.Where(i => i.IsDrink).Where(i => !i.IsAvailable).ToList();
+        }
 
         public List<Item> GetSnacks()
         {
             return _context.Items.Where(i => !i.IsDrink).ToList();
+        }
+
+        public List<Item> GetAvailableSnacks()
+        {
+            return _context.Items.Where(i => !i.IsDrink).Where(i => i.IsAvailable).ToList();
+        }
+        public List<Item> GetUnavailableSnacks()
+        {
+            return _context.Items.Where(i => !i.IsDrink).Where(i => !i.IsAvailable).ToList();
         }
 
         public Item? GetItem(string name)
