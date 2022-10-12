@@ -7,13 +7,14 @@ namespace KwikKwekSnack.Data
     {
         [Key]
         public string Name { get; set; }
+        public int ItemID { get; set; }
         public string Description { get; set; }
         public string ImageURL { get; set; }
         public float Price { get; set; }
         public bool IsDrink { get; set; }
         [NotNull]
         public bool IsAvailable { get; set; }
-        public virtual List<DrinkInOrder> Drinks { get; set; }
-        public virtual List<SnackInOrder> Snacks { get; set; }
+        public virtual List<DrinkInOrder> OrderWithDrinks { get; set; }
+        public virtual List<SnackInOrder> OrderWithSnacks { get; set; }
     }
 }

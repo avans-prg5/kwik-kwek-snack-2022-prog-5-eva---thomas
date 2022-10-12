@@ -4,6 +4,7 @@ using KwikKwekSnack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KwikKwekSnack.Data.Migrations
 {
     [DbContext(typeof(SnackContext))]
-    partial class SnackContextModelSnapshot : ModelSnapshot
+    [Migration("20221012105741_item_id")]
+    partial class item_id
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -313,9 +315,6 @@ namespace KwikKwekSnack.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("SnackID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<int>("Amount")

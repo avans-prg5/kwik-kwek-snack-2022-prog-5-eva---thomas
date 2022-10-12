@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KwikKwekSnack.Data;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Xml.Linq;
 using WebApp.Models;
@@ -8,11 +9,14 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        Order _currentOrder = null;
+        Order _currentOrder = new Order();
+        SnackRepo _repo = new SnackRepo();
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _currentOrder.Drinks = new List<DrinkInOrder>();
+            _currentOrder.Snacks = new List<SnackInOrder>();
         }
 
         public IActionResult Index()
@@ -25,23 +29,39 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult Drinks()
-        {
-            var drinks = new List<DrinkInOrder>();
-            var drink = new DrinkInOrder();
-            drink.Drink = new Item() { Name = "bepis" };
-            _currentOrder = new Order();
-            drinks.Add(drink);
-            ViewBag.Drinks = new List<Item> { drink.Drink }; //TODO: real data
-            ViewBag.CurrentOrder = _currentOrder;
-            return View(new DrinkInOrder());
-        }
+        public IActionResult Drinks() => View(new DrinkInOrder());
 
-        /*public IActionResult Drinks(DrinkInOrder drink)
+        [HttpPost]
+        public IActionResult Drinks(DrinkInOrder drink)
         {
             _currentOrder.Drinks.Add(drink);
             return View();
-        }*/
+        }
+
+        [HttpGet]
+        public IActionResult Snacks()
+        {
+            _repo.SaveNewOrder(_currentOrder);
+            SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Snacks(SnackInOrder snack)
+        {
+            //Setting snack in order
+            snack.Snack = _repo.GetItem(snack.SnackName);
+            snack.Order = _repo.GetOrder(snack.OrderID);
+            snack.SnackID = snack.Snack.ItemID;
+            _repo.AddSnackToOrder(snack);
+
+            _currentOrder = snack.Order;
+            _repo.UpdateOrder(_currentOrder);
+
+            //New snack
+            SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
+            return View(model);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

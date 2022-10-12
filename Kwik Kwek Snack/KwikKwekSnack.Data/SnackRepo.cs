@@ -45,9 +45,22 @@ namespace KwikKwekSnack.Data
             return _context.Items.Where(i => i.Name.Equals(name)).FirstOrDefault();
         }
 
+        public List<SnackInOrder> GetSnacksInOrder(int orderID)
+        {
+            return _context.Snacks.Where(i => i.OrderID == orderID).ToList();
+        }
+
+        public List<DrinkInOrder> GetDrinksInOrder(int orderID)
+        {
+            return _context.Drinks.Where(i => i.OrderID == orderID).ToList();
+        }
+
         public Order? GetOrder(int id)
         {
-            return _context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
+            Order temp = _context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
+            temp.Drinks = GetDrinksInOrder(temp.OrderID);
+            temp.Snacks = GetSnacksInOrder(temp.OrderID);
+            return temp;
         }
 
         public List<Extra> GetExtra(ExtraName name)
@@ -95,9 +108,9 @@ namespace KwikKwekSnack.Data
                 for (int i = 0; i < drinkInOrder.Amount; i++)
                 {
                     sum += drinkInOrder.Drink.Price;
-                    if (drinkInOrder.straw) { sum += 0.10f; }
-                    if (drinkInOrder.ice) { sum += 0.10f; }
-                    switch (drinkInOrder.size)
+                    if (drinkInOrder.Straw) { sum += 0.10f; }
+                    if (drinkInOrder.Ice) { sum += 0.10f; }
+                    switch (drinkInOrder.Size)
                     {
                         case Size.S:
                             break;
@@ -124,6 +137,33 @@ namespace KwikKwekSnack.Data
 
             return sum;
 
+        }
+
+        public void AddSnackToOrder(SnackInOrder item)
+        {
+            var snacks = GetOrder(item.OrderID).Snacks;
+            foreach (var snack in snacks)
+            {
+                if (snack.SnackName.Equals(item.SnackName) && snack.OrderID == item.OrderID)
+                {
+                    snacks.FirstOrDefault(item).Amount++;
+                    _context.SaveChanges();
+                    return;
+                }
+            };
+            item.Amount++;
+            _context.Snacks.Add(item);
+            _context.SaveChanges();
+        }
+
+        public void AddDrinkToOrder(DrinkInOrder item)
+        {
+            var drinks = GetOrder(item.OrderID).Drinks;
+            if (drinks.Contains(item))
+                drinks.FirstOrDefault(item).Amount++;
+            else
+                _context.Drinks.Add(item);
+            _context.SaveChanges();
         }
     }
 
