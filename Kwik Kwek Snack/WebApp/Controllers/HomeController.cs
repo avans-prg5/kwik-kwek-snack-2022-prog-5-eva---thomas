@@ -9,14 +9,14 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        WebApp.Models.Order _currentOrder = new WebApp.Models.Order();
+        Order _currentOrder = new Order();
         SnackRepo _repo = new SnackRepo();
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _currentOrder.Drinks = new List<Models.DrinkInOrder>();
-            _currentOrder.Snacks = new List<Models.SnackInOrder>();
+            _currentOrder.Drinks = new List<DrinkInOrder>();
+            _currentOrder.Snacks = new List<SnackInOrder>();
         }
 
         public IActionResult Index()
@@ -29,10 +29,10 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult Drinks() => View(new WebApp.Models.DrinkInOrder());
+        public IActionResult Drinks() => View(new DrinkInOrder());
 
         [HttpPost]
-        public IActionResult Drinks(WebApp.Models.DrinkInOrder drink)
+        public IActionResult Drinks(DrinkInOrder drink)
         {
             _currentOrder.Drinks.Add(drink);
             return View();
@@ -41,22 +41,25 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Snacks()
         {
-            Models.SnackInOrder model = new Models.SnackInOrder() { Order = _currentOrder };
-            _repo.SaveNewOrder();
+            _repo.SaveNewOrder(_currentOrder);
+            SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Snacks(WebApp.Models.SnackInOrder snack)
+        public IActionResult Snacks(SnackInOrder snack)
         {
             //Setting snack in order
-            var tempSnack = _repo.GetItem(snack.SnackName);
-            snack.Snack = new Models.Item().ConvertType(tempSnack);
-            snack.Order = _currentOrder;
-            _currentOrder.Snacks.Add(snack);
+            snack.Snack = _repo.GetItem(snack.SnackName);
+            snack.Order = _repo.GetOrder(snack.OrderID);
+            snack.SnackID = snack.Snack.ItemID;
+            _repo.AddSnackToOrder(snack);
+
+            _currentOrder = snack.Order;
+            _repo.UpdateOrder(_currentOrder);
 
             //New snack
-            Models.SnackInOrder model = new Models.SnackInOrder() { Order = _currentOrder };
+            SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
             return View(model);
         }
 
@@ -68,7 +71,7 @@ namespace WebApp.Controllers
 
         public void CreateNewOrder()
         {
-            _currentOrder = new WebApp.Models.Order();
+            _currentOrder = new Order();
         }
     }
 }

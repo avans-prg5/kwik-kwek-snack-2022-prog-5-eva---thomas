@@ -1,4 +1,4 @@
-﻿@model WebApp.Models.SnackInOrder
+﻿@model KwikKwekSnack.Data.SnackInOrder
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -15,7 +15,7 @@
                     <div class="snack-img-box">
                         <img src="~/img/@snack.ImageURL" class="snack-img" />
                         @Html.RadioButtonFor(model => model.SnackName, snack.Name) @snack.Name
-                        <input id="OrderID" value="@Model.Order.OrderID" type="hidden">
+                        <input asp-for="OrderID" value="@Model.Order.OrderID" type="hidden">
                     </div>
                 }
             </div>
@@ -27,15 +27,16 @@
         <p>Overzicht</p>
         <p>Drankjes:</p>
         <ul>
-            @foreach (DrinkInOrder drankje in Model.Order.Drinks)
+            @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
             {
-            <li>@drankje.DrinkName</li>
+            <li>@drankje.DrinkName.......@drankje.Amount</li>
             }
         </ul>
         <p>Snacks:</p>
         <ul>
-            @foreach(SnackInOrder snack in Model.Order.Snacks){
-                <li>@snack.SnackName</li>
+            @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
+            {
+                <li>@snack.SnackName.......@snack.Amount</li>
             }
         </ul>
     </aside>
