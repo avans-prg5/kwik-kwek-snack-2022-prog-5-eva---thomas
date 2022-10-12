@@ -12,6 +12,7 @@ namespace WebApp.Models
 
         public string SnackName { get; set; }
         public Order Order { get; set; }
+        public int OrderId { get; set; }
         public List<Extra> Extra { get; set; }
     }
 }

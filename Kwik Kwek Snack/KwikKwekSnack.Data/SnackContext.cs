@@ -36,7 +36,7 @@ namespace KwikKwekSnack.Data
 
             modelBuilder.Entity<DrinkInOrder>()
                 .HasOne(pt => pt.Drink)
-                .WithMany(p => p.Drinks)
+                .WithMany(p => p.OrderWithDrinks)
                 .HasForeignKey(pt => pt.DrinkName);
 
             modelBuilder.Entity<DrinkInOrder>()
@@ -49,7 +49,7 @@ namespace KwikKwekSnack.Data
 
             modelBuilder.Entity<SnackInOrder>()
                 .HasOne(pt => pt.Snack)
-                .WithMany(p => p.Snacks)
+                .WithMany(p => p.OrderWithSnacks)
                 .HasForeignKey(pt => pt.SnackName);
 
             modelBuilder.Entity<SnackInOrder>()

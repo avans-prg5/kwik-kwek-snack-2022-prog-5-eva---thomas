@@ -9,5 +9,6 @@ namespace WebApp.Models
         public bool straw { get; set; }
         public bool ice { get; set; }
         public Size Size { get; set; }
+        public string DrinkName { get; set; }
     }
 }

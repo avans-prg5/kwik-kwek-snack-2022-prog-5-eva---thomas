@@ -4,6 +4,8 @@
     {
         public ExtraName Name { get; set; }
         public int Price { get; set; }
+
+
     }
     public enum ExtraName
     {
