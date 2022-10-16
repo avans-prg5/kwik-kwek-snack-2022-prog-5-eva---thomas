@@ -142,10 +142,17 @@ namespace KwikKwekSnack.Data
         public void AddDrinkToOrder(DrinkInOrder item)
         {
             var drinks = GetOrder(item.OrderID).Drinks;
-            if (drinks.Contains(item))
-                drinks.FirstOrDefault(item).Amount++;
-            else
-                _context.Drinks.Add(item);
+            foreach (var drink in drinks)
+            {
+                if (drink.DrinkName.Equals(item.DrinkName) && drink.OrderID == item.OrderID)
+                {
+                    drink.Amount++;
+                    _context.SaveChanges();
+                    return;
+                }
+            };
+            item.Amount++;
+            _context.Drinks.Add(item);
             _context.SaveChanges();
         }
     }

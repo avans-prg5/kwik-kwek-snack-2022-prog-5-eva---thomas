@@ -29,19 +29,36 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult Drinks() => View(new DrinkInOrder());
+        [HttpGet]
+        public IActionResult Drinks()
+        {
+            _repo.SaveNewOrder(_currentOrder);
+            TempData["orderid"] = _currentOrder.OrderID;
+            DrinkInOrder model = new DrinkInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
+            return View(model);
+        }
 
         [HttpPost]
         public IActionResult Drinks(DrinkInOrder drink)
         {
-            _currentOrder.Drinks.Add(drink);
-            return View();
+            //Setting drink in order
+            drink.Drink = _repo.GetItem(drink.DrinkName);
+            drink.Order = _repo.GetOrder(drink.OrderID);
+            drink.DrinkId = drink.Drink.ItemID;
+            _repo.AddDrinkToOrder(drink);
+
+            _currentOrder = drink.Order;
+            _repo.UpdateOrder(_currentOrder);
+
+            //New drink
+            DrinkInOrder model = new DrinkInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
+            return View(model);
         }
 
         [HttpGet]
-        public IActionResult Snacks()
+        public IActionResult Snacks(int orderID)
         {
-            _repo.SaveNewOrder(_currentOrder);
+            _currentOrder = _repo.GetOrder(Int32.Parse(TempData["orderid"].ToString()));
             SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
             return View(model);
         }
