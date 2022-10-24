@@ -27,6 +27,10 @@ namespace KwikKwekSnack.Data
         {
             return _context.Items.Where(i => i.Name.Equals(name)).FirstOrDefault();
         }
+        public Item? GetItem(int id)
+        {
+            return _context.Items.Where(i => i.ItemID == id).FirstOrDefault();
+        }
 
         public List<SnackInOrder> GetSnacksInOrder(int orderID)
         {
