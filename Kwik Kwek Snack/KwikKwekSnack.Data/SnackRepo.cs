@@ -27,6 +27,10 @@ namespace KwikKwekSnack.Data
         {
             return _context.Items.Where(i => i.Name.Equals(name)).FirstOrDefault();
         }
+        public Item? GetItem(int id)
+        {
+            return _context.Items.Where(i => i.ItemID == id).FirstOrDefault();
+        }
 
         public List<SnackInOrder> GetSnacksInOrder(int orderID)
         {
@@ -153,6 +157,26 @@ namespace KwikKwekSnack.Data
             };
             item.Amount++;
             _context.Drinks.Add(item);
+            _context.SaveChanges();
+        }
+
+        public void CreateNewItem(Item item)
+        {
+            _context.Items.Add(item);
+            _context.SaveChanges();
+        }
+        public void EditItem(Item item)
+        {
+            if (_context.Items.Contains(item))
+            {
+                _context.Items.Update(item);
+            }
+            _context.SaveChanges();
+        }
+
+        public void DeleteItem(Item item)
+        {
+            _context.Items.Remove(item);
             _context.SaveChanges();
         }
     }
