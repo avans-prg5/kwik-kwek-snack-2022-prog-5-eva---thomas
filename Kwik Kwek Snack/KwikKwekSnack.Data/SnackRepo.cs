@@ -159,6 +159,26 @@ namespace KwikKwekSnack.Data
             _context.Drinks.Add(item);
             _context.SaveChanges();
         }
+
+        public void CreateNewItem(Item item)
+        {
+            _context.Items.Add(item);
+            _context.SaveChanges();
+        }
+        public void EditItem(Item item)
+        {
+            if (_context.Items.Contains(item))
+            {
+                _context.Items.Update(item);
+            }
+            _context.SaveChanges();
+        }
+
+        public void DeleteItem(Item item)
+        {
+            _context.Items.Remove(item);
+            _context.SaveChanges();
+        }
     }
 
 }

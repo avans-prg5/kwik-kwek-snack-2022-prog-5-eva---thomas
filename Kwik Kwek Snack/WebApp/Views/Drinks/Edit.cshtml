@@ -47,6 +47,7 @@
                        @(Html.Raw(Model.IsAvailable ? "checked=\"checked\"" : ""))/>
                 <span asp-validation-for="IsAvailable" class="text-danger"></span>
             </div>
+            <input asp-for="IsDrink" type="hidden" value="true" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

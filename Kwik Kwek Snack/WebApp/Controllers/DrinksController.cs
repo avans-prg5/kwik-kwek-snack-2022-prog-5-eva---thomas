@@ -29,9 +29,9 @@ namespace WebApp.Controllers
         // POST: DrinksController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public RedirectToActionResult Create(IFormCollection collection)
+        public RedirectToActionResult Create(Item item, IFormCollection collection)
         {
-            //TODO: add to db
+            _repo.CreateNewItem(item);
             return RedirectToAction("Index", "Drinks");
         }
 
@@ -49,9 +49,9 @@ namespace WebApp.Controllers
         // POST: DrinksController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public RedirectToActionResult Edit(int id, IFormCollection collection)
+        public RedirectToActionResult Edit(Item item, int id, IFormCollection collection)
         {
-            //TODO: update db
+            _repo.EditItem(item);
             return RedirectToAction("Index", "Drinks");
         }
 
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public RedirectToActionResult Delete(int id, IFormCollection collection)
         {
-            //TODO: update db
+            _repo.DeleteItem(_repo.GetItem(id));
             return RedirectToAction("Index", "Drinks");
         }
     }
