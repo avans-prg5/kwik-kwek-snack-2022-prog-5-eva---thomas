@@ -1,13 +1,24 @@
 ﻿@model KwikKwekSnack.Data.DrinkInOrder
 @{
     ViewData["Title"] = "Drinks";
+    KwikKwekSnack.Data.SnackRepo _repo = new KwikKwekSnack.Data.SnackRepo();
 }
 
-<form asp-action="Drinks">
-    <div class="item-overview">
-        <section class="drinks">
+<div class="item-overview">
+    <section class="drinks">
+        <form asp-action="Drinks">
+            <div class="snack-size">
+                @foreach (KwikKwekSnack.Data.Item drink in _repo.GetDrinks())
+                {
+                    <div class="snack-img-box">
+                        <img src="~/img/@drink.ImageURL" class="snack-img" />
+                        @Html.Raw($"<p style=\"color:white; text-align: center; \">{drink.Name}</p>")
+                        @Html.RadioButtonFor(model => model.DrinkName, drink.Name)
+                        <input asp-for="OrderID" value="@Model.Order.OrderID" type="hidden">
+                    </div>
+                }
+            </div>
             <div class="drink-size">
-                <!--Pictures of drinks-->
                 <div class="drink-img-box">
                     <img src="~/img/placeholder.jpeg"
                          class="drink-size-s" />
@@ -43,7 +54,6 @@
                 </div>
             </div>
             <div class="drink-options">
-                <!--Options-->
                 <p>Opties</p>
 
                 <ul>
@@ -51,25 +61,27 @@
                     <input type="checkbox" asp-for="Straw">Plastic rietje</input>
                 </ul>
             </div>
-        </section>
-        <aside class="overview">
-            <!--Overview-->
-            <p>Overzicht</p>
-            <p>Drankjes:</p>
-            <ul>
-               @* @foreach (DrinkInOrder drankje in ViewBag.Drinks)
-                {
-                    <li>@drankje.Drink.Name</li>
-                }*@
-            </ul>
-        </aside>
-    </div>
-    <footer>
-        <!--Buttons-->
-        <section class="btn-div">
-            <input type="submit" class="btn-1">Toevoegen</input>
-            <a href="~/Home/Snacks" class="btn-1">Naar snacks</a>
-            <button class="btn-2">Afronden</button>
-        </section>
-    </footer>
-</form>
+            <footer class="btn-div">
+                <input type="submit" class="btn-1">Toevoegen</input>
+                <a href="~/Home/Snacks" class="btn-1">Naar snacks</a>
+            </footer>
+        </form>
+    </section>
+    <aside class="overview">
+        <p>Overzicht</p>
+        <p>Drankjes:</p>
+        <ul>
+            @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
+            {
+            <li>@drankje.DrinkName.......@drankje.Amount</li>
+            }
+        </ul>
+        <p>Snacks:</p>
+        <ul>
+            @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
+            {
+                <li>@snack.SnackName.......@snack.Amount</li>
+            }
+        </ul>
+    </aside>
+</div>
