@@ -116,7 +116,10 @@ namespace KwikKwekSnack.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("ItemID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemID"), 1L, 1);
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -313,9 +316,6 @@ namespace KwikKwekSnack.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("SnackID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<int>("Amount")
