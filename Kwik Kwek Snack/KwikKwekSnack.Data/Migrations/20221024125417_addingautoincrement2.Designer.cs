@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KwikKwekSnack.Data.Migrations
 {
     [DbContext(typeof(SnackContext))]
-    [Migration("20221011091327_isavailable")]
-    partial class isavailable
+    [Migration("20221024125417_addingautoincrement2")]
+    partial class addingautoincrement2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,7 @@ namespace KwikKwekSnack.Data.Migrations
 
             modelBuilder.Entity("KwikKwekSnack.Data.DrinkInOrder", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
                     b.Property<int>("DrinkId")
@@ -39,16 +39,16 @@ namespace KwikKwekSnack.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("ice")
+                    b.Property<bool>("Ice")
                         .HasColumnType("bit");
 
-                    b.Property<int>("size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
-                    b.Property<bool>("straw")
+                    b.Property<bool>("Straw")
                         .HasColumnType("bit");
 
-                    b.HasKey("OrderId", "DrinkId");
+                    b.HasKey("OrderID", "DrinkId");
 
                     b.HasIndex("DrinkName");
 
@@ -63,15 +63,15 @@ namespace KwikKwekSnack.Data.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int?>("SnackInOrderOrderId")
+                    b.Property<int?>("SnackInOrderOrderID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SnackInOrderSnackId")
+                    b.Property<int?>("SnackInOrderSnackID")
                         .HasColumnType("int");
 
                     b.HasKey("Name");
 
-                    b.HasIndex("SnackInOrderOrderId", "SnackInOrderSnackId");
+                    b.HasIndex("SnackInOrderOrderID", "SnackInOrderSnackID");
 
                     b.ToTable("Extras");
 
@@ -117,6 +117,12 @@ namespace KwikKwekSnack.Data.Migrations
                     b.Property<bool>("IsDrink")
                         .HasColumnType("bit");
 
+                    b.Property<int>("ItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemID"), 1L, 1);
+
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
@@ -132,6 +138,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/coke.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1.5f
                         },
                         new
@@ -141,6 +148,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/fanta.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1.5f
                         },
                         new
@@ -150,6 +158,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/pepsi.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1.5f
                         },
                         new
@@ -159,6 +168,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/coke0.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1.5f
                         },
                         new
@@ -168,6 +178,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/choccy.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1f
                         },
                         new
@@ -177,6 +188,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/fristi.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1f
                         },
                         new
@@ -186,6 +198,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/kutwater.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1f
                         },
                         new
@@ -195,6 +208,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/water.png",
                             IsAvailable = true,
                             IsDrink = true,
+                            ItemID = 0,
                             Price = 1f
                         },
                         new
@@ -204,6 +218,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/frikandel.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 1.7f
                         },
                         new
@@ -213,6 +228,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/speciaal.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 2.1f
                         },
                         new
@@ -222,6 +238,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/kroket.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 1.7f
                         },
                         new
@@ -231,6 +248,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/kaas.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 1.85f
                         },
                         new
@@ -240,6 +258,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/bami.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 1.85f
                         },
                         new
@@ -249,6 +268,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/nuggets.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 2.05f
                         },
                         new
@@ -258,6 +278,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/burger.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 3.55f
                         },
                         new
@@ -267,6 +288,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "~/img/cburger.png",
                             IsAvailable = true,
                             IsDrink = false,
+                            ItemID = 0,
                             Price = 4f
                         });
                 });
@@ -292,10 +314,10 @@ namespace KwikKwekSnack.Data.Migrations
 
             modelBuilder.Entity("KwikKwekSnack.Data.SnackInOrder", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<int>("SnackId")
+                    b.Property<int>("SnackID")
                         .HasColumnType("int");
 
                     b.Property<int>("Amount")
@@ -305,7 +327,7 @@ namespace KwikKwekSnack.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("OrderId", "SnackId");
+                    b.HasKey("OrderID", "SnackID");
 
                     b.HasIndex("SnackName");
 
@@ -315,14 +337,14 @@ namespace KwikKwekSnack.Data.Migrations
             modelBuilder.Entity("KwikKwekSnack.Data.DrinkInOrder", b =>
                 {
                     b.HasOne("KwikKwekSnack.Data.Item", "Drink")
-                        .WithMany("Drinks")
+                        .WithMany("OrderWithDrinks")
                         .HasForeignKey("DrinkName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("KwikKwekSnack.Data.Order", "Order")
                         .WithMany("Drinks")
-                        .HasForeignKey("OrderId")
+                        .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -335,19 +357,19 @@ namespace KwikKwekSnack.Data.Migrations
                 {
                     b.HasOne("KwikKwekSnack.Data.SnackInOrder", null)
                         .WithMany("Extra")
-                        .HasForeignKey("SnackInOrderOrderId", "SnackInOrderSnackId");
+                        .HasForeignKey("SnackInOrderOrderID", "SnackInOrderSnackID");
                 });
 
             modelBuilder.Entity("KwikKwekSnack.Data.SnackInOrder", b =>
                 {
                     b.HasOne("KwikKwekSnack.Data.Order", "Order")
                         .WithMany("Snacks")
-                        .HasForeignKey("OrderId")
+                        .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("KwikKwekSnack.Data.Item", "Snack")
-                        .WithMany("Snacks")
+                        .WithMany("OrderWithSnacks")
                         .HasForeignKey("SnackName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -359,9 +381,9 @@ namespace KwikKwekSnack.Data.Migrations
 
             modelBuilder.Entity("KwikKwekSnack.Data.Item", b =>
                 {
-                    b.Navigation("Drinks");
+                    b.Navigation("OrderWithDrinks");
 
-                    b.Navigation("Snacks");
+                    b.Navigation("OrderWithSnacks");
                 });
 
             modelBuilder.Entity("KwikKwekSnack.Data.Order", b =>

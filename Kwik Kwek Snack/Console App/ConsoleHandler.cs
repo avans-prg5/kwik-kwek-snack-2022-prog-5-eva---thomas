@@ -43,10 +43,6 @@ namespace Console_App
                 Console.WriteLine("");
             }
         }
-        private static void GetNextMockResult()
-        {
-            Console.WriteLine("ORDERNR | TAKE | DRINK<SMALL>{ICE}, ORDER ITEM 2, ORDER ITEM 3, ORDER ITEM 4");
-        }
 
         private static void PrintToBePreparedOrders(List<Order> orders)
         {
@@ -110,7 +106,7 @@ namespace Console_App
 
         private static void PrintHeader()
         {
-
+            Console.WriteLine("")
             Separator();
 
         }
