@@ -21,16 +21,22 @@
         </form>
     </section>
     <aside class="overview">
-        <!--Overview-->
-        <p>Overzicht</p>
-        <p>Drankjes:</p>
+        <h4>Overzicht</h4>
+        <h4>Drankjes:</h4>
         <ul>
             @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
             {
-            <li>@drankje.DrinkName.......@drankje.Amount</li>
+                <li>
+                    @drankje.DrinkName.......@drankje.Amount
+                    <ul>
+                        <li>Grootte: @drankje.Size</li>
+                        <li>Ijs: @drankje.Ice</li>
+                        <li>Rietje: @drankje.Straw</li>
+                    </ul>
+                </li>
             }
         </ul>
-        <p>Snacks:</p>
+        <h4>Snacks:</h4>
         <ul>
             @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
             {

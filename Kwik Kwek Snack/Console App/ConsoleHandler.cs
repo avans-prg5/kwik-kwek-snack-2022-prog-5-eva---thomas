@@ -106,7 +106,7 @@ namespace Console_App
 
         private static void PrintHeader()
         {
-            Console.WriteLine("")
+            Console.WriteLine("");
             Separator();
 
         }

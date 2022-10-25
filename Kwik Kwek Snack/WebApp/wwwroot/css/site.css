@@ -20,32 +20,25 @@ body {
 .item-overview {
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
-    flex-direction: row;
-    flex-wrap: nowrap;
     width: 100%;
-    border:solid;
-    border-width:3px;
-    border-color:black;
 }
 
 .overview {
     width: 25%;
-    height: fit-content;
+    height: 100%;
     padding: 2.5%;
-    background-color: darkgoldenrod;
+    background-color: rgb(184, 134, 11);
     border-radius: 10px;
-    font-size: 32px;
+    font-size: 18px;
     color: white;
+    border: 3px solid rgb(164, 114, 0);
+    align-self: stretch
 }
 
 .drinks {
     width: 70%;
     padding-right: 2.5%;
     border-radius: 10px;
-    border: solid;
-    border-width: 3px;
-    border-color: red;
 }
 
 .drink-options {
