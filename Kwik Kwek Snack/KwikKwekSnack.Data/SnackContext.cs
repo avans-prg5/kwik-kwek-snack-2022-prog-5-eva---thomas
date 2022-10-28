@@ -17,7 +17,7 @@ namespace KwikKwekSnack.Data
         public DbSet<Order> Orders { get; set; } = null!;
         public DbSet<SnackInOrder> Snacks { get; set; } = null!;
         public DbSet<Item> Items { get; set; } = null!;
-
+        public DbSet<BeschikbareExtraInSnack> beschikbareExtraInSnacks { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -57,6 +57,22 @@ namespace KwikKwekSnack.Data
                 .WithMany(p => p.Snacks)
                 .HasForeignKey(pt => pt.OrderID);
 
+            modelBuilder.Entity<BeschikbareExtraInSnack>()
+                .HasKey(t => new { t.ItemID, t.Name });
+
+            modelBuilder.Entity<BeschikbareExtraInSnack>()
+                 .HasOne(pt => pt.SnackItem)
+                 .WithMany(p => p.BeschikbareExtras)
+                 .HasForeignKey(pt => pt.Name);
+
+            modelBuilder.Entity<BeschikbareExtraInSnack>()
+                .HasOne(p => p.Extra)
+                .WithMany(pt => pt.BeschikbareItems)
+                .HasForeignKey(p => p.ItemID);
+
+
+        
+             
             //Seed data
             modelBuilder.Entity<Item>().HasData(
                 new Item() { Name = "Coca Cola", Description = "Coca Cola", ImageURL = "~/img/coke.png", Price = 1.5f, IsDrink = true, IsAvailable = true },

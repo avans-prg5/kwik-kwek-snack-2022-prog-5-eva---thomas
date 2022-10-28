@@ -143,6 +143,10 @@ namespace KwikKwekSnack.Data
             _context.SaveChanges();
         }
 
+       /* public List<Extra> GetAvailableExtrasForItem(Item item)
+        {
+           List<Extra> available = _context.Extras.Where
+        }*/
         public void AddDrinkToOrder(DrinkInOrder item)
         {
             var drinks = GetOrder(item.OrderID).Drinks;
@@ -179,6 +183,7 @@ namespace KwikKwekSnack.Data
             _context.Items.Remove(item);
             _context.SaveChanges();
         }
+
     }
 
 }
