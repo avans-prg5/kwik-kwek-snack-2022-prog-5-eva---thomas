@@ -58,19 +58,17 @@ namespace KwikKwekSnack.Data
                 .HasForeignKey(pt => pt.OrderID);
 
             modelBuilder.Entity<BeschikbareExtraInSnack>()
-                .HasKey(t => new { t.ItemID, t.Name });
+                .HasKey(t => new { t.ItemName, t.ExtraName });
 
             modelBuilder.Entity<BeschikbareExtraInSnack>()
-                 .HasOne(pt => pt.SnackItem)
-                 .WithMany(p => p.BeschikbareExtras)
-                 .HasForeignKey(pt => pt.Name);
+                 .HasOne(pt => pt.Extra)
+                 .WithMany(p => p.BeschikbareItems)
+                 .HasForeignKey(pt => pt.ExtraName);
 
             modelBuilder.Entity<BeschikbareExtraInSnack>()
-                .HasOne(p => p.Extra)
-                .WithMany(pt => pt.BeschikbareItems)
-                .HasForeignKey(p => p.ItemID);
-
-
+                .HasOne(p => p.SnackItem)
+                .WithMany(pt => pt.BeschikbareExtras)
+                .HasForeignKey(p => p.ItemName);
         
              
             //Seed data
@@ -92,13 +90,6 @@ namespace KwikKwekSnack.Data
                 new Item() { Name = "Hamburger", Description = "Hamburger", ImageURL = "~/img/burger.png", Price = 3.55f, IsDrink = false, IsAvailable = true },
                 new Item() { Name = "Cheeseburger", Description = "Cheeseburger", ImageURL = "~/img/cburger.png", Price = 4, IsDrink = false, IsAvailable = true }
                 ) ;
-
-            modelBuilder.Entity<Extra>().HasData(
-                new Extra() { Name = ExtraName.Kaas, Price = 0.5f },
-                new Extra() { Name = ExtraName.Ui, Price = 0.5f },
-                new Extra() { Name = ExtraName.Sla, Price = 0.5f },
-                new Extra() { Name = ExtraName.Tomaat, Price = 0.5f }
-                );
         }
     }
 }

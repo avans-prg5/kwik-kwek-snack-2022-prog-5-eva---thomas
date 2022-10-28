@@ -4,7 +4,7 @@
 
 namespace KwikKwekSnack.Data.Migrations
 {
-    public partial class addingautoincrement2 : Migration
+    public partial class extra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,7 +99,7 @@ namespace KwikKwekSnack.Data.Migrations
                 name: "Extras",
                 columns: table => new
                 {
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
                     SnackInOrderOrderID = table.Column<int>(type: "int", nullable: true),
                     SnackInOrderSnackID = table.Column<int>(type: "int", nullable: true)
@@ -114,15 +114,29 @@ namespace KwikKwekSnack.Data.Migrations
                         principalColumns: new[] { "OrderID", "SnackID" });
                 });
 
-            migrationBuilder.InsertData(
-                table: "Extras",
-                columns: new[] { "Name", "Price", "SnackInOrderOrderID", "SnackInOrderSnackID" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "beschikbareExtraInSnacks",
+                columns: table => new
                 {
-                    { 0, 0.5f, null, null },
-                    { 1, 0.5f, null, null },
-                    { 2, 0.5f, null, null },
-                    { 3, 0.5f, null, null }
+                    ItemName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ExtraName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    isAvailable = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_beschikbareExtraInSnacks", x => new { x.ItemName, x.ExtraName });
+                    table.ForeignKey(
+                        name: "FK_beschikbareExtraInSnacks_Extras_ExtraName",
+                        column: x => x.ExtraName,
+                        principalTable: "Extras",
+                        principalColumn: "Name",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_beschikbareExtraInSnacks_Items_ItemName",
+                        column: x => x.ItemName,
+                        principalTable: "Items",
+                        principalColumn: "Name",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -149,6 +163,11 @@ namespace KwikKwekSnack.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_beschikbareExtraInSnacks_ExtraName",
+                table: "beschikbareExtraInSnacks",
+                column: "ExtraName");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Drinks_DrinkName",
                 table: "Drinks",
                 column: "DrinkName");
@@ -166,6 +185,9 @@ namespace KwikKwekSnack.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "beschikbareExtraInSnacks");
+
             migrationBuilder.DropTable(
                 name: "Drinks");
 

@@ -50,7 +50,7 @@ namespace KwikKwekSnack.Data
             return temp;
         }
 
-        public List<Extra> GetExtra(ExtraName name)
+        public List<Extra> GetExtra(string name)
         {
             return _context.Extras.Where(e => e.Name.Equals(name.ToString())).ToList();
         }
