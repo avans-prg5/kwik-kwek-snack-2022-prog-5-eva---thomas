@@ -17,7 +17,7 @@ namespace KwikKwekSnack.Data
         public DbSet<Order> Orders { get; set; } = null!;
         public DbSet<SnackInOrder> Snacks { get; set; } = null!;
         public DbSet<Item> Items { get; set; } = null!;
-
+        public DbSet<BeschikbareExtraInSnack> beschikbareExtraInSnacks { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -57,6 +57,20 @@ namespace KwikKwekSnack.Data
                 .WithMany(p => p.Snacks)
                 .HasForeignKey(pt => pt.OrderID);
 
+            modelBuilder.Entity<BeschikbareExtraInSnack>()
+                .HasKey(t => new { t.ItemName, t.ExtraName });
+
+            modelBuilder.Entity<BeschikbareExtraInSnack>()
+                 .HasOne(pt => pt.Extra)
+                 .WithMany(p => p.BeschikbareItems)
+                 .HasForeignKey(pt => pt.ExtraName);
+
+            modelBuilder.Entity<BeschikbareExtraInSnack>()
+                .HasOne(p => p.SnackItem)
+                .WithMany(pt => pt.BeschikbareExtras)
+                .HasForeignKey(p => p.ItemName);
+        
+             
             //Seed data
             modelBuilder.Entity<Item>().HasData(
                 new Item() { Name = "Coca Cola", Description = "Coca Cola", ImageURL = "~/img/coke.png", Price = 1.5f, IsDrink = true, IsAvailable = true },
@@ -76,13 +90,6 @@ namespace KwikKwekSnack.Data
                 new Item() { Name = "Hamburger", Description = "Hamburger", ImageURL = "~/img/burger.png", Price = 3.55f, IsDrink = false, IsAvailable = true },
                 new Item() { Name = "Cheeseburger", Description = "Cheeseburger", ImageURL = "~/img/cburger.png", Price = 4, IsDrink = false, IsAvailable = true }
                 ) ;
-
-            modelBuilder.Entity<Extra>().HasData(
-                new Extra() { Name = ExtraName.Kaas, Price = 0.5f },
-                new Extra() { Name = ExtraName.Ui, Price = 0.5f },
-                new Extra() { Name = ExtraName.Sla, Price = 0.5f },
-                new Extra() { Name = ExtraName.Tomaat, Price = 0.5f }
-                );
         }
     }
 }
