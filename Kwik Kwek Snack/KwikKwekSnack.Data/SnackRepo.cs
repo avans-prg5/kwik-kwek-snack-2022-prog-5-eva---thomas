@@ -101,7 +101,8 @@ namespace KwikKwekSnack.Data
             {
                 for (int i = 0; i < drinkInOrder.Amount; i++)
                 {
-                    sum += GetItem(drinkInOrder.DrinkName).Price;
+                    drinkInOrder.Drink = GetItem(drinkInOrder.DrinkName);
+                    sum += drinkInOrder.Drink.Price;
                     if (drinkInOrder.Straw) { sum += 0.10f; }
                     if (drinkInOrder.Ice) { sum += 0.10f; }
                     switch (drinkInOrder.Size)
