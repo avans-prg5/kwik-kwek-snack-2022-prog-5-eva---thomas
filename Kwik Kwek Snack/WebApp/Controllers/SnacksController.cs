@@ -31,6 +31,7 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public RedirectToActionResult Create(Item item, IFormCollection collection)
         {
+
             _repo.CreateNewItem(item);
             return RedirectToAction("Index", "Snacks");
         }

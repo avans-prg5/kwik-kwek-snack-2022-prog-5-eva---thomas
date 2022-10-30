@@ -1,0 +1,44 @@
+﻿@model KwikKwekSnack.Data.Order
+@{
+    KwikKwekSnack.Data.SnackRepo _repo = new KwikKwekSnack.Data.SnackRepo();
+}
+
+<div class="overview">
+    <h4>Bestelling nr. @Model.OrderID</h4>
+    <h4>Overzicht</h4>
+    <h4>Drankjes:</h4>
+    <ul>
+        @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Drinks)
+        {
+            <li>
+                @drankje.DrinkName.......@drankje.Amount
+                <ul>
+                    <li>Grootte: @drankje.Size</li>
+                    <li>Ijs: @drankje.Ice</li>
+                    <li>Rietje: @drankje.Straw</li>
+                </ul>
+            </li>
+        }
+    </ul>
+    <h4>Snacks:</h4>
+    <ul>
+        @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Snacks)
+        {
+            <li>@snack.SnackName.......@snack.Amount</li>
+        }
+    </ul>
+    <h4>
+        Totaal bedrag:
+        <p>€@String.Format("{0:0.00}",_repo.GetOrderPrice(Model)).ToString()</p>
+    </h4>
+</div>
+<form asp-action="Order">
+    <input asp-for="OrderID" value="@Model.OrderID" type="hidden">
+    <div class="takeaway-div">
+        <p class="takeaway">Meenemen</p>
+    </div>
+    <footer class="btn-div">
+        <input type="submit" asp-for="TakeAway" value="@true" name="Meenemen" class="btn-2" />
+        <input type="submit" asp-for="TakeAway" value="@false" class="btn-2" />
+    </footer>
+</form>

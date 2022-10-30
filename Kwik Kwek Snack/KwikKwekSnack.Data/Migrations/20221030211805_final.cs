@@ -4,7 +4,7 @@
 
 namespace KwikKwekSnack.Data.Migrations
 {
-    public partial class disableautoinc : Migration
+    public partial class final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
