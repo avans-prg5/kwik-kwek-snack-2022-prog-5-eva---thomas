@@ -106,14 +106,36 @@ namespace Console_App
 
         private static void PrintHeader()
         {
-            Console.WriteLine("");
+            Separator();
+            Console.WriteLine("CURRENT ORDERS");
             Separator();
 
         }
-
-        public static void GenerateVisual()
+        private static void PrintQueue(List<Order> orders)
         {
-            throw new NotImplementedException();
+            for (int i = orders.Count()-1; i > orders.Count() - 6; i--)
+            {
+                if (i > -1) { Console.WriteLine(orders[i].OrderID); }
+            }
+        }
+
+        private static void PrintFooter(Order lastCompleted)
+        {
+            Separator();
+            Console.WriteLine("READY FOR PICKUP");
+            Separator();
+            if (lastCompleted != null)
+            {
+                Console.WriteLine(lastCompleted.OrderID);
+            }
+        }
+
+        public void GenerateVisual(List<Order> orders,Order activeOrder, Order lastcompleted)
+        {
+            Console.Clear();
+            PrintHeader();
+            PrintQueue(orders);
+            PrintFooter(lastcompleted);
            
             //PrintToBePreparedOrders();
         }

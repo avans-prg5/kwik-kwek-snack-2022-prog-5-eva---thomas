@@ -10,9 +10,9 @@ namespace Console_App
 {
     public class MainController
     {
-        private ConsoleHandler CH;
+        private static ConsoleHandler CH;
         private SnackRepo _repo;
-        private Queue<Order> _queue;
+        private List<Order> _queue;
         private Order _ActiveOrder;
         private Order _LastCompeletedOrder;
 
@@ -21,17 +21,30 @@ namespace Console_App
         {
             CH = new ConsoleHandler(this);
             _repo = new SnackRepo();
-            _queue = new Queue<Order>();
+            _queue = new List<Order>();
+            FillQueue();
+            _ActiveOrder = PrepareNext();
             HeartBeat();
         }
 
-
-
-        private void PrepareNext()
+        public void FillQueue()
         {
-            _ActiveOrder = _queue.Dequeue();
-            _ActiveOrder.Status = Status.Bereiding;
-            updateOrder(_ActiveOrder);
+            _queue.Clear();
+
+            _queue = _repo.GetOrdersInQueue();
+        }
+
+        private Order PrepareNext()
+        {
+            if (_queue.Count > 0)
+            {
+                _ActiveOrder = _queue.First();
+                _queue.Remove(_queue.First());
+                _ActiveOrder.Status = Status.Bereiding;
+                updateOrder(_ActiveOrder);
+                return _ActiveOrder;
+            }
+            return null;
         }
 
         private void FinishCurrentOrder()
@@ -46,9 +59,12 @@ namespace Console_App
         {
             while (true)
             {
-
-
-                Thread.Sleep(2000);
+                if(_queue.Count < 5) { FillQueue(); }
+                if (_ActiveOrder != null) { FinishCurrentOrder(); }
+                PrepareNext();
+                CH.GenerateVisual(_queue, _ActiveOrder, _LastCompeletedOrder);
+               
+                Thread.Sleep(10000);
             }
         }
 
