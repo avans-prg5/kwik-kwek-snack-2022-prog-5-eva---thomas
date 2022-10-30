@@ -132,7 +132,7 @@ namespace KwikKwekSnack.Data
             var snacks = GetOrder(item.OrderID).Snacks;
             foreach (var snack in snacks)
             {
-                if (snack.SnackName.Equals(item.SnackName) && snack.OrderID == item.OrderID)
+                if (snack.SnackName.Equals(item.SnackName) && snack.Extra.Equals(item.Extra) && snack.OrderID == item.OrderID)
                 {
                     snack.Amount++;
                     _context.SaveChanges();
@@ -153,7 +153,7 @@ namespace KwikKwekSnack.Data
             var drinks = GetOrder(item.OrderID).Drinks;
             foreach (var drink in drinks)
             {
-                if (drink.DrinkName.Equals(item.DrinkName) && drink.OrderID == item.OrderID)
+                if (drink.DrinkName.Equals(item.DrinkName) && drink.Size.Equals(item.Size) && drink.Straw.Equals(item.Straw) && drink.Ice.Equals(item.Ice) && drink.OrderID == item.OrderID)
                 {
                     drink.Amount++;
                     _context.SaveChanges();
