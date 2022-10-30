@@ -48,11 +48,11 @@
             </ul>
             <h4>
                 Totaal bedrag:
-                <p>@_repo.GetOrderPrice(Model.Order)</p>
+                <p>€@String.Format("{0:0.00}",_repo.GetOrderPrice(Model.Order)).ToString()</p>
             </h4>
         </div>
         <footer class="btn-div">
-            <a class="btn-2">Afronden</a>
+            <a href="~/Home/Order" class="btn-2">Afronden</a>
         </footer>
     </aside>
 </div>

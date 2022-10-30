@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KwikKwekSnack.Data.Migrations
 {
     [DbContext(typeof(SnackContext))]
-    [Migration("20221030205301_disableautoinc")]
-    partial class disableautoinc
+    [Migration("20221030211805_final")]
+    partial class final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
