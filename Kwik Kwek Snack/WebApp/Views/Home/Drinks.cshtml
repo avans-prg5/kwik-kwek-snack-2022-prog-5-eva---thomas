@@ -70,32 +70,41 @@
                 </ul>
             </div>
             <footer class="btn-div">
-                <input type="submit" class="btn-1">Toevoegen</input>
+                <input type="submit" class="btn-1" value="Toevoegen"/>
                 <a href="~/Home/Snacks" class="btn-1">Naar snacks</a>
             </footer>
         </form>
     </section>
-    <aside class="overview">
-        <h4>Overzicht</h4>
-        <h4>Drankjes:</h4>
-        <ul>
-            @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
-            {
-            <li>@drankje.DrinkName.......@drankje.Amount
-                    <ul>
-                        <li>Grootte: @drankje.Size</li>
-                        <li>Ijs: @drankje.Ice</li>
-                        <li>Rietje: @drankje.Straw</li>
-                </ul>
-            </li>
-            }
-        </ul>
-        <h4>Snacks:</h4>
-        <ul>
-            @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
-            {
-                <li>@snack.SnackName.......@snack.Amount</li>
-            }
-        </ul>
+    <aside class="overview-with-btn">
+        <div class="overview">
+            <h4>Overzicht</h4>
+            <h4>Drankjes:</h4>
+            <ul>
+                @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
+                {
+                    <li>
+                        @drankje.DrinkName.......@drankje.Amount
+                        <ul>
+                            <li>Grootte: @drankje.Size</li>
+                            <li>Ijs: @drankje.Ice</li>
+                            <li>Rietje: @drankje.Straw</li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <h4>Snacks:</h4>
+            <ul>
+                @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
+                {
+                    <li>@snack.SnackName.......@snack.Amount</li>
+                }
+            </ul>
+            <h4>Totaal bedrag:
+                <p>@_repo.GetOrderPrice(Model.Order)</p>
+            </h4>
+        </div>
+        <footer class="btn-div">
+            <a class="btn-2">Afronden</a>
+        </footer>
     </aside>
 </div>
