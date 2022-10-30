@@ -1,0 +1,32 @@
+﻿@model KwikKwekSnack.Data.BeschikbareExtraInSnack
+
+@{
+    ViewData["Title"] = "Details";
+    KwikKwekSnack.Data.SnackRepo _repo = new KwikKwekSnack.Data.SnackRepo();
+}
+
+<h1>Voeg toe aan snack</h1>
+
+<div>
+    <h4>Extra</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExtraName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExtraName)
+        </dd>
+    </dl>
+    <form asp-action="Add">
+        <select asp-for="ItemName">
+            @foreach(KwikKwekSnack.Data.Item snack in _repo.GetSnacks()){
+                <option>@snack.Name</option>
+            }
+        </select>
+        <input type="hidden" asp-for="ExtraName" value="@Model.ExtraName" />
+        <input type="hidden" asp-for="isAvailable" value="@true" />
+        <input type="submit" value="Add" class="btn btn-primary" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

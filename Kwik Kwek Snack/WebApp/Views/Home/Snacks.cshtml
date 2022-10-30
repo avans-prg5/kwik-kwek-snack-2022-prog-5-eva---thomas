@@ -19,7 +19,6 @@
             </div>
             <footer class="btn-div">
                 <input type="submit" class="btn-1" value="Toevoegen" />
-                <a href="~/Home/Drinks" class="btn-1">Naar drankjes</a>
             </footer>
         </form>
     </section>
@@ -47,6 +46,10 @@
                     <li>@snack.SnackName.......@snack.Amount</li>
                 }
             </ul>
+            <h4>
+                Totaal bedrag:
+                <p>@_repo.GetOrderPrice(Model.Order)</p>
+            </h4>
         </div>
         <footer class="btn-div">
             <a class="btn-2">Afronden</a>
