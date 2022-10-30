@@ -19,6 +19,7 @@ namespace KwikKwekSnack.Data
 
     public enum Status
     {
+        Samenstellen,
         Wachtrij,
         Bereiding,
         Gereed
