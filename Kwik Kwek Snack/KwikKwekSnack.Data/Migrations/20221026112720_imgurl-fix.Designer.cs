@@ -4,6 +4,7 @@ using KwikKwekSnack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KwikKwekSnack.Data.Migrations
 {
     [DbContext(typeof(SnackContext))]
-    partial class SnackContextModelSnapshot : ModelSnapshot
+    [Migration("20221026112720_imgurl-fix")]
+    partial class imgurlfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,24 +23,6 @@ namespace KwikKwekSnack.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("KwikKwekSnack.Data.BeschikbareExtraInSnack", b =>
-                {
-                    b.Property<string>("ItemName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ExtraName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("isAvailable")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ItemName", "ExtraName");
-
-                    b.HasIndex("ExtraName");
-
-                    b.ToTable("beschikbareExtraInSnacks");
-                });
 
             modelBuilder.Entity("KwikKwekSnack.Data.DrinkInOrder", b =>
                 {
@@ -73,8 +57,8 @@ namespace KwikKwekSnack.Data.Migrations
 
             modelBuilder.Entity("KwikKwekSnack.Data.Extra", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -90,6 +74,28 @@ namespace KwikKwekSnack.Data.Migrations
                     b.HasIndex("SnackInOrderOrderID", "SnackInOrderSnackID");
 
                     b.ToTable("Extras");
+
+                    b.HasData(
+                        new
+                        {
+                            Name = 0,
+                            Price = 0.5f
+                        },
+                        new
+                        {
+                            Name = 1,
+                            Price = 0.5f
+                        },
+                        new
+                        {
+                            Name = 2,
+                            Price = 0.5f
+                        },
+                        new
+                        {
+                            Name = 3,
+                            Price = 0.5f
+                        });
                 });
 
             modelBuilder.Entity("KwikKwekSnack.Data.Item", b =>
@@ -169,7 +175,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Chocomel",
                             Description = "Chocomel",
-                            ImageURL = "choccy.png",
+                            ImageURL = "~choccy.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -179,7 +185,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Fristi",
                             Description = "Fristi",
-                            ImageURL = "fristi.png",
+                            ImageURL = "~fristi.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -189,7 +195,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Spa Rood",
                             Description = "Sprankelend water",
-                            ImageURL = "kutwater.png",
+                            ImageURL = "~kutwater.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -239,7 +245,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Kaassoufflé",
                             Description = "Kaassoufflé",
-                            ImageURL = "kaas.png",
+                            ImageURL = "~kaas.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -328,25 +334,6 @@ namespace KwikKwekSnack.Data.Migrations
                     b.ToTable("Snacks");
                 });
 
-            modelBuilder.Entity("KwikKwekSnack.Data.BeschikbareExtraInSnack", b =>
-                {
-                    b.HasOne("KwikKwekSnack.Data.Extra", "Extra")
-                        .WithMany("BeschikbareItems")
-                        .HasForeignKey("ExtraName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("KwikKwekSnack.Data.Item", "SnackItem")
-                        .WithMany("BeschikbareExtras")
-                        .HasForeignKey("ItemName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Extra");
-
-                    b.Navigation("SnackItem");
-                });
-
             modelBuilder.Entity("KwikKwekSnack.Data.DrinkInOrder", b =>
                 {
                     b.HasOne("KwikKwekSnack.Data.Item", "Drink")
@@ -392,15 +379,8 @@ namespace KwikKwekSnack.Data.Migrations
                     b.Navigation("Snack");
                 });
 
-            modelBuilder.Entity("KwikKwekSnack.Data.Extra", b =>
-                {
-                    b.Navigation("BeschikbareItems");
-                });
-
             modelBuilder.Entity("KwikKwekSnack.Data.Item", b =>
                 {
-                    b.Navigation("BeschikbareExtras");
-
                     b.Navigation("OrderWithDrinks");
 
                     b.Navigation("OrderWithSnacks");
