@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -214,6 +215,13 @@ namespace KwikKwekSnack.Data
         public List<BeschikbareExtraInSnack> GetExtraInSnack(string snack)
         {
             return _context.beschikbareExtraInSnacks.Where(e => e.ItemName == snack).ToList();
+        }
+
+        public int GetHighestItemId()
+        {
+            Item item = _context.Items.OrderBy(o => o.ItemID).LastOrDefault();
+            if (item != null) { return item.ItemID; }
+            else { return 0; }
         }
 
     }
