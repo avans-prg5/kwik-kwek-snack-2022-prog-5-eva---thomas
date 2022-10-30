@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using KwikKwekSnack.Data;
+﻿using KwikKwekSnack.Data;
 
 namespace Console_App
 {
@@ -25,11 +19,6 @@ namespace Console_App
 
         }
 
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                              e.SignalTime);
-        }
         private static void Separator()
         {
             for (int i = 0; i < 49; i++) { Console.Write("█"); }
@@ -44,65 +33,7 @@ namespace Console_App
             }
         }
 
-        private static void PrintToBePreparedOrders(List<Order> orders)
-        {
-            foreach (Order order in orders)
-            {
-                Console.Write(order.OrderID + " | ");
-                if (order.TakeAway)
-                {
-                    Console.Write("TAKE |");
-                }
-                else
-                {
-                    Console.Write("STAY |");
-                }
-                //if (order.Snacks.Length > 0)
-                //{
-                //    Console.Write("|SNACKS[");
-                //    foreach (Snack snack in order.Snacks)
-                //    {
-                //        Console.Write(snack.Name);
-                //        if (snack.Extras.Length > 0)
-                //        {
-                //            Console.Write("{");
-                //            foreach (Extra extra in snack.Extras)
-                //            {
-                //                Console.Write(extra.Extras + ", ");
-                //            }
-                //            Console.Write("}");
-                //        }
-                //        Console.Write(",");
-
-                //    }
-                //    Console.Write("]");
-
-                //}
-                //if (order.Drinks.Length > 0)
-                //{
-                //    Console.Write("DRINKS[");
-                //    foreach (Drink drink in order.Drinks)
-                //    {
-                //        Console.Write(drink.Name + "<"+drink.Size+">");
-                //        if (drink.Ice || drink.Straw)
-                //        {
-                //            Console.Write("{");
-                //            if (drink.Ice)
-                //            {
-                //                Console.Write("ice, ");
-                //            }
-                //            if (drink.Straw)
-                //            {
-                //                Console.Write("straw ");
-                //            }
-                //            Console.Write("}");
-                //        }
-                //    }
-                //    Console.WriteLine("]");
-
-                //}
-            }
-        }
+        
 
         private static void PrintHeader()
         {
@@ -111,12 +42,34 @@ namespace Console_App
             Separator();
 
         }
-        private static void PrintQueue(List<Order> orders)
+        private static void PrintQueue(List<Order> orders, Order currentOrder)
         {
             for (int i = orders.Count()-1; i > orders.Count() - 6; i--)
             {
-                if (i > -1) { Console.WriteLine(orders[i].OrderID); }
+                String adin;
+               
+                if (i > -1) {
+                    if (orders[i].TakeAway == false)
+                    {
+                        adin = "| DINER";
+                    }
+                    else { adin = "| TAKEOUT"; }
+
+                    Console.WriteLine(orders[i].OrderID+adin); 
+                }
             }
+            if (currentOrder != null)
+            {
+                String adin;
+                if (currentOrder.TakeAway == false)
+                {
+                    adin = "| DINER";
+                }
+                else { adin = "| TAKEOUT"; }
+                Console.WriteLine(currentOrder.OrderID + adin) ;
+            }
+            else { Console.WriteLine(); }
+
         }
 
         private static void PrintFooter(Order lastCompleted)
@@ -126,7 +79,17 @@ namespace Console_App
             Separator();
             if (lastCompleted != null)
             {
-                Console.WriteLine(lastCompleted.OrderID);
+                String adin;
+                if (lastCompleted.TakeAway == false)
+                {
+                    adin = "| DINER";
+                }
+                else { adin = "| TAKEOUT"; }
+                Console.WriteLine(lastCompleted.OrderID+adin);
+            }
+            else
+            {
+                Console.WriteLine("No completed orders");
             }
         }
 
@@ -134,10 +97,9 @@ namespace Console_App
         {
             Console.Clear();
             PrintHeader();
-            PrintQueue(orders);
+            PrintQueue(orders, activeOrder);
             PrintFooter(lastcompleted);
-           
-            //PrintToBePreparedOrders();
+
         }
     }
 }
