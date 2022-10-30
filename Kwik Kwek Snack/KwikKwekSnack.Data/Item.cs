@@ -8,7 +8,6 @@ namespace KwikKwekSnack.Data
     {
         [Key]
         public string Name { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ItemID { get; set; }
         public string Description { get; set; }
         public string ImageURL { get; set; }

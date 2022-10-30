@@ -4,7 +4,7 @@
 
 namespace KwikKwekSnack.Data.Migrations
 {
-    public partial class killme : Migration
+    public partial class disableautoinc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace KwikKwekSnack.Data.Migrations
                 columns: table => new
                 {
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ItemID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemID = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
@@ -140,26 +139,39 @@ namespace KwikKwekSnack.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Items",
-                columns: new[] { "Name", "Description", "ImageURL", "IsAvailable", "IsDrink", "Price" },
+                table: "Extras",
+                columns: new[] { "Name", "Price", "SnackInOrderOrderID", "SnackInOrderSnackID" },
                 values: new object[,]
                 {
-                    { "Bamischijf", "Bamischijf", "bami.png", true, false, 1.85f },
-                    { "Cheeseburger", "Cheeseburger", "cburger.png", true, false, 4f },
-                    { "Chocomel", "Chocomel", "choccy.png", true, true, 1f },
-                    { "Coca Cola", "Coca Cola", "coke.png", true, true, 1.5f },
-                    { "Coca Cola Zero", "Coca Cola Zero", "coke0.png", true, true, 1.5f },
-                    { "Fanta", "Fanta", "fanta.png", true, true, 1.5f },
-                    { "Frikandel", "Frikandel", "frikandel.png", true, false, 1.7f },
-                    { "Frikandel Speciaal", "Frikandel Speciaal", "speciaal.png", true, false, 2.1f },
-                    { "Fristi", "Fristi", "fristi.png", true, true, 1f },
-                    { "Hamburger", "Hamburger", "burger.png", true, false, 3.55f },
-                    { "Kaassoufflé", "Kaassoufflé", "kaas.png", true, false, 1.85f },
-                    { "Kipnuggets", "Kipnuggets", "nuggets.png", true, false, 2.05f },
-                    { "Kroket", "Kroket", "kroket.png", true, false, 1.7f },
-                    { "Pepsi", "Pepsi Cola", "pepsi.png", true, true, 1.5f },
-                    { "Spa Blauw", "Water", "water.png", true, true, 1f },
-                    { "Spa Rood", "Sprankelend water", "kutwater.png", true, true, 1f }
+                    { "Curry", 0.15f, null, null },
+                    { "Kaas", 0.15f, null, null },
+                    { "Ketchup", 0.15f, null, null },
+                    { "Mayonaise", 0.15f, null, null },
+                    { "Sla", 0.15f, null, null },
+                    { "Tomaat", 0.15f, null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Items",
+                columns: new[] { "Name", "Description", "ImageURL", "IsAvailable", "IsDrink", "ItemID", "Price" },
+                values: new object[,]
+                {
+                    { "Bamischijf", "Bamischijf", "bami.png", true, false, 13, 1.85f },
+                    { "Cheeseburger", "Cheeseburger", "cburger.png", true, false, 16, 4f },
+                    { "Chocomel", "Chocomel", "choccy.png", true, true, 5, 1f },
+                    { "Coca Cola", "Coca Cola", "coke.png", true, true, 1, 1.5f },
+                    { "Coca Cola Zero", "Coca Cola Zero", "coke0.png", true, true, 4, 1.5f },
+                    { "Fanta", "Fanta", "fanta.png", true, true, 2, 1.5f },
+                    { "Frikandel", "Frikandel", "frikandel.png", true, false, 9, 1.7f },
+                    { "Frikandel Speciaal", "Frikandel Speciaal", "speciaal.png", true, false, 10, 2.1f },
+                    { "Fristi", "Fristi", "fristi.png", true, true, 6, 1f },
+                    { "Hamburger", "Hamburger", "burger.png", true, false, 15, 3.55f },
+                    { "Kaassoufflé", "Kaassoufflé", "kaas.png", true, false, 12, 1.85f },
+                    { "Kipnuggets", "Kipnuggets", "nuggets.png", true, false, 14, 2.05f },
+                    { "Kroket", "Kroket", "kroket.png", true, false, 11, 1.7f },
+                    { "Pepsi", "Pepsi Cola", "pepsi.png", true, true, 3, 1.5f },
+                    { "Spa Blauw", "Water", "water.png", true, true, 8, 1f },
+                    { "Spa Rood", "Sprankelend water", "kutwater.png", true, true, 7, 1f }
                 });
 
             migrationBuilder.CreateIndex(
