@@ -90,6 +90,15 @@ namespace KwikKwekSnack.Data
                 new Item() { Name = "Hamburger", Description = "Hamburger", ImageURL = "burger.png", Price = 3.55f, IsDrink = false, IsAvailable = true },
                 new Item() { Name = "Cheeseburger", Description = "Cheeseburger", ImageURL = "cburger.png", Price = 4, IsDrink = false, IsAvailable = true }
                 ) ;
+
+            modelBuilder.Entity<Extra>().HasData(
+                new Extra() { Name = "Mayonaise", Price = 0.15f },
+                new Extra() { Name = "Curry", Price = 0.15f },
+                new Extra() { Name = "Ketchup", Price = 0.15f },
+                new Extra() { Name = "Sla", Price = 0.15f },
+                new Extra() { Name = "Tomaat", Price = 0.15f },
+                new Extra() { Name = "Kaas", Price = 0.15f }
+                );
         }
     }
 }

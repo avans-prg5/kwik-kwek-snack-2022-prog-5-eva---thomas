@@ -50,9 +50,14 @@ namespace KwikKwekSnack.Data
             return temp;
         }
 
-        public List<Extra> GetExtra(string name)
+        public List<Extra> GetExtras()
         {
-            return _context.Extras.Where(e => e.Name.Equals(name.ToString())).ToList();
+            return _context.Extras.ToList();
+        }
+
+        public Extra GetExtra(string name)
+        {
+            return _context.Extras.Where(e => e.Name.Equals(name.ToString())).FirstOrDefault();
         }
 
         public Order SaveNewOrder(Order order)
@@ -84,7 +89,7 @@ namespace KwikKwekSnack.Data
             {
                 for (int i = 0; i < snackInOrder.Amount; i++)
                 {
-                    sum += snackInOrder.Snack.Price;
+                    sum += GetItem(snackInOrder.SnackName).Price;
                     foreach (Extra extra in snackInOrder.Extra)
                     {
                         sum += extra.Price;
@@ -95,7 +100,7 @@ namespace KwikKwekSnack.Data
             {
                 for (int i = 0; i < drinkInOrder.Amount; i++)
                 {
-                    sum += drinkInOrder.Drink.Price;
+                    sum += GetItem(drinkInOrder.DrinkName).Price;
                     if (drinkInOrder.Straw) { sum += 0.10f; }
                     if (drinkInOrder.Ice) { sum += 0.10f; }
                     switch (drinkInOrder.Size)
@@ -183,6 +188,32 @@ namespace KwikKwekSnack.Data
         {
             _context.Items.Remove(item);
             _context.SaveChanges();
+        }
+
+        public void CreateNewExtra(Extra extra)
+        {
+            _context.Extras.Add(extra);
+            _context.SaveChanges();
+        }
+        public void CreateExtraInSnack(BeschikbareExtraInSnack extra)
+        {
+            _context.beschikbareExtraInSnacks.Add(extra);
+            _context.SaveChanges();
+        }
+        public void EditExtra(Extra extra)
+        {
+            _context.Extras.Update(extra);
+            _context.SaveChanges();
+        }
+        public void DeleteExtra(Extra extra)
+        {
+            _context.Extras.Remove(extra);
+            _context.SaveChanges();
+        }
+
+        public List<BeschikbareExtraInSnack> GetExtraInSnack(string snack)
+        {
+            return _context.beschikbareExtraInSnacks.Where(e => e.ItemName == snack).ToList();
         }
 
     }
