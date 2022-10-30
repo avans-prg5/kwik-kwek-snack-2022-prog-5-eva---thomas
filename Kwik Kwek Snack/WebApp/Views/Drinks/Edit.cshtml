@@ -1,0 +1,56 @@
+﻿@model KwikKwekSnack.Data.Item
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Drink</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*Cannot change the primary key so we change the scaffolded view to put the Id in a hidden type.
+            This way we still receive it in our Action (and check what we receive), but it looks much cleaner*@
+            <input asp-for="ItemID" class="form-control" type="hidden" />
+            <div class="form-group">
+                <label asp-for="ItemID" class="control-label"></label>
+                @Html.DisplayFor(m => m.ItemID)
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" placeholder="@Model.Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" placeholder="@Model.Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" placeholder="@Model.Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageURL" class="control-label"></label>
+                <input asp-for="ImageURL" placeholder="@Model.ImageURL" class="form-control" />
+                <span asp-validation-for="ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsAvailable" class="control-label"></label>
+                <input type="checkbox"
+                       name="IsAvailable"
+                       value="@Model"
+                       @(Html.Raw(Model.IsAvailable ? "checked=\"checked\"" : ""))/>
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+            </div>
+            <input asp-for="IsDrink" type="hidden" value="true" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

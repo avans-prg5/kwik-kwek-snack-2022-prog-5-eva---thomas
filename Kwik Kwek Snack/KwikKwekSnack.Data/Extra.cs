@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    enum Extra
+    public class Extra
     {
-        Cheese,
-        Onion,
-        Lettuce,
-        Tomato
+        [Key]
+        public String Name { get; set; }
+        public float Price { get; set; }
+        public virtual List<BeschikbareExtraInSnack> BeschikbareItems { get; set; }
     }
+
 }

@@ -1,17 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KwikKwekSnack.Data
 {
-    internal class Order
+    public class Order
     {
-        public Snack[] Snacks { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
-        public Drink[] Drinks { get; set; }
         public Status Status { get; set; }
         public bool TakeAway { get; set; }
+        public List<DrinkInOrder> Drinks { get; set; }
+        public List<SnackInOrder> Snacks { get; set; }
+    }
+
+    public enum Status
+    {
+        Samenstellen,
+        Wachtrij,
+        Bereiding,
+        Gereed
     }
 }

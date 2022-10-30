@@ -1,0 +1,172 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.item-overview {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.overview-with-btn {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.overview {
+    width: 100%;
+    height: 100%;
+    padding: 2.5%;
+    background-color: rgb(184, 134, 11);
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    border: 3px solid rgb(164, 114, 0);
+    align-self: stretch
+}
+
+.drinks {
+    width: 70%;
+    padding-right: 2.5%;
+    border-radius: 10px;
+}
+
+.drink-options {
+    background-color: darkslateblue;
+    padding: 2.5%;
+    font-size: 32px;
+    color: white;
+    border-radius: 10px;
+}
+
+.drink-size {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    background-color: darkslateblue;
+    padding: 2.5%;
+    border-radius: 10px;
+    margin-bottom: 2.5%;
+}
+
+.drink-img-box {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    display:flex;
+    height: 100%;
+    width: 25%;
+}
+
+.drink-size-s {
+    order: 1;
+    width: 50%;
+}
+
+.drink-size-m {
+    order: 2;
+    width: 67.5%;
+}
+
+.drink-size-l {
+    order: 3;
+    width: 80%;
+}
+
+.drink-size-xl {
+    order: 4;
+    width: 100%;
+}
+
+.btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 32px;
+    color: white;
+    margin-top: 2.5%;
+}
+
+.btn-1 {
+    border-radius: 10px;
+    background-color: darkslateblue;
+    width: 25%;
+}
+
+.btn-2 {
+    border-radius: 10px;
+    margin: 2.5%;
+    color: white;
+    background-color: darkgoldenrod;
+    width: 100%;
+    border: 3px solid rgb(164, 114, 0);
+}
+
+.main-btn-alignment{
+    display: flex;
+    justify-content: center;
+}
+
+.main-btn{
+    border-radius: 10px;
+    background-color: darkslateblue;
+    width: 50%;
+    font-size: 40px;
+    color: white;
+}
+
+.snack-img-box {
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    margin: 2.5%;
+}
+
+.snack-img {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.snack-size {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    background-color: darkslateblue;
+    justify-content: space-evenly;
+    padding: 2.5%;
+    border-radius: 10px;
+    margin-bottom: 2.5%;
+}
+
+.takeaway-div{
+    display: flex;
+    justify-content: center;
+}
+
+.takeaway{
+    font-size: 32px;
+    display: flex;
+    align-self:center;
+}
