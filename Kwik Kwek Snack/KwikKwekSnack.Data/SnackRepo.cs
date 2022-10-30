@@ -55,10 +55,11 @@ namespace KwikKwekSnack.Data
             return _context.Extras.Where(e => e.Name.Equals(name.ToString())).ToList();
         }
 
-        public void SaveNewOrder(Order order)
+        public Order SaveNewOrder(Order order)
         {
             _context.Orders.Add(order);
             _context.SaveChanges();
+            return _context.Orders.Where(o => o.OrderID == order.OrderID).FirstOrDefault();
         }
         public Order? GetLastCompleted()
         {

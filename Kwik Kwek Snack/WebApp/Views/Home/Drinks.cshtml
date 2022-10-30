@@ -18,7 +18,7 @@
                     </div>
                 }
             </div>
-            <div class="drink-size">
+            <!--<div class="drink-size">
                 <div class="drink-img-box">
                     <img src="~/img/placeholder.jpeg"
                          class="drink-size-s" />
@@ -52,36 +52,59 @@
                            asp-for="Size"
                            value="M" />
                 </div>
-            </div>
+            </div>-->
             <div class="drink-options">
                 <p>Opties</p>
 
                 <ul>
-                    <input type="checkbox" asp-for="Ice">Ijs</input>
-                    <input type="checkbox" asp-for="Straw">Plastic rietje</input>
+                    <li>
+                        <label asp-for="Size" class="control-label"></label>
+                        <select asp-for="Size" asp-items="Html.GetEnumSelectList<KwikKwekSnack.Data.Size>()"></select>
+                    </li>
+                    <li>
+                        <input type="checkbox" asp-for="Ice">Ijs</input>
+                    </li>
+                    <li>
+                        <input type="checkbox" asp-for="Straw">Plastic rietje</input>
+                    </li>
                 </ul>
             </div>
             <footer class="btn-div">
-                <input type="submit" class="btn-1">Toevoegen</input>
+                <input type="submit" class="btn-1" value="Toevoegen"/>
                 <a href="~/Home/Snacks" class="btn-1">Naar snacks</a>
             </footer>
         </form>
     </section>
-    <aside class="overview">
-        <p>Overzicht</p>
-        <p>Drankjes:</p>
-        <ul>
-            @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
-            {
-            <li>@drankje.DrinkName.......@drankje.Amount</li>
-            }
-        </ul>
-        <p>Snacks:</p>
-        <ul>
-            @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
-            {
-                <li>@snack.SnackName.......@snack.Amount</li>
-            }
-        </ul>
+    <aside class="overview-with-btn">
+        <div class="overview">
+            <h4>Overzicht</h4>
+            <h4>Drankjes:</h4>
+            <ul>
+                @foreach (KwikKwekSnack.Data.DrinkInOrder drankje in Model.Order.Drinks)
+                {
+                    <li>
+                        @drankje.DrinkName.......@drankje.Amount
+                        <ul>
+                            <li>Grootte: @drankje.Size</li>
+                            <li>Ijs: @drankje.Ice</li>
+                            <li>Rietje: @drankje.Straw</li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <h4>Snacks:</h4>
+            <ul>
+                @foreach (KwikKwekSnack.Data.SnackInOrder snack in Model.Order.Snacks)
+                {
+                    <li>@snack.SnackName.......@snack.Amount</li>
+                }
+            </ul>
+            <h4>Totaal bedrag:
+                <p>@_repo.GetOrderPrice(Model.Order)</p>
+            </h4>
+        </div>
+        <footer class="btn-div">
+            <a class="btn-2">Afronden</a>
+        </footer>
     </aside>
 </div>

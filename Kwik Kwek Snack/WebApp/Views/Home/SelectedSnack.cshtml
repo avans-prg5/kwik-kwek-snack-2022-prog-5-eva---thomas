@@ -7,15 +7,17 @@
     <section class="drinks">
         <form asp-action="Snacks">
             <div class="snack-size">
-                @foreach (KwikKwekSnack.Data.Item snack in _repo.GetSnacks())
-                {
-                    <div class="snack-img-box">
-                        <img src="~/img/@snack.ImageURL" class="snack-img" />
-                        @Html.Raw($"<p style=\"color:white; text-align: center; \">{snack.Name}</p>")
-                        @Html.RadioButtonFor(model => model.SnackName, snack.Name)
-                        <input asp-for="OrderID" value="@Model.Order.OrderID" type="hidden">
-                    </div>
-                }
+                <div class="snack-img-box">
+                    <img src="~/img/@Model.Snack.ImageURL" class="snack-img" />
+                    @Html.Raw($"<p style=\"color:white; text-align: center; \">{Model.SnackName}</p>")
+                    <input asp-for="OrderID" value="@Model.Order.OrderID" type="hidden">
+                </div>
+            </div>
+            <div class="drink-options">
+                @*<p>Extra's</p>
+                <ul>
+                    @foreach(KwikKwekSnack.Data.Extra extra in Model.Snack)
+                </ul>*@
             </div>
             <footer class="btn-div">
                 <input type="submit" class="btn-1" value="Toevoegen" />
