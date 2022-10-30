@@ -69,26 +69,26 @@ namespace KwikKwekSnack.Data
                 .HasOne(p => p.SnackItem)
                 .WithMany(pt => pt.BeschikbareExtras)
                 .HasForeignKey(p => p.ItemName);
-        
-             
+
+
             //Seed data
             modelBuilder.Entity<Item>().HasData(
-                new Item() { Name = "Coca Cola", Description = "Coca Cola", ImageURL = "coke.png", Price = 1.5f, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Fanta", Description = "Fanta", ImageURL = "fanta.png", Price = 1.5f, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Pepsi", Description = "Pepsi Cola", ImageURL = "pepsi.png", Price = 1.5f, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Coca Cola Zero", Description = "Coca Cola Zero", ImageURL = "coke0.png", Price = 1.5f, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Chocomel", Description = "Chocomel", ImageURL = "choccy.png", Price = 1, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Fristi", Description = "Fristi", ImageURL = "fristi.png", Price = 1, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Spa Rood", Description = "Sprankelend water", ImageURL = "kutwater.png", Price = 1, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Spa Blauw", Description = "Water", ImageURL = "water.png", Price = 1, IsDrink = true, IsAvailable = true },
-                new Item() { Name = "Frikandel", Description = "Frikandel", ImageURL = "frikandel.png", Price = 1.7f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Frikandel Speciaal", Description = "Frikandel Speciaal", ImageURL = "speciaal.png", Price = 2.1f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Kroket", Description = "Kroket", ImageURL = "kroket.png", Price = 1.7f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Kaassoufflé", Description = "Kaassoufflé", ImageURL = "kaas.png", Price = 1.85f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Bamischijf", Description = "Bamischijf", ImageURL = "bami.png", Price = 1.85f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Kipnuggets", Description = "Kipnuggets", ImageURL = "nuggets.png", Price = 2.05f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Hamburger", Description = "Hamburger", ImageURL = "burger.png", Price = 3.55f, IsDrink = false, IsAvailable = true },
-                new Item() { Name = "Cheeseburger", Description = "Cheeseburger", ImageURL = "cburger.png", Price = 4, IsDrink = false, IsAvailable = true }
+                new Item() { Name = "Coca Cola", Description = "Coca Cola", ImageURL = "coke.png", Price = 1.5f, IsDrink = true, IsAvailable = true, ItemID = 1 },
+                new Item() { Name = "Fanta", Description = "Fanta", ImageURL = "fanta.png", Price = 1.5f, IsDrink = true, IsAvailable = true , ItemID = 2},
+                new Item() { Name = "Pepsi", Description = "Pepsi Cola", ImageURL = "pepsi.png", Price = 1.5f, IsDrink = true, IsAvailable = true, ItemID =3},
+                new Item() { Name = "Coca Cola Zero", Description = "Coca Cola Zero", ImageURL = "coke0.png", Price = 1.5f, IsDrink = true, IsAvailable = true, ItemID = 4 },
+                new Item() { Name = "Chocomel", Description = "Chocomel", ImageURL = "choccy.png", Price = 1, IsDrink = true, IsAvailable = true , ItemID = 5},
+                new Item() { Name = "Fristi", Description = "Fristi", ImageURL = "fristi.png", Price = 1, IsDrink = true, IsAvailable = true , ItemID = 6},
+                new Item() { Name = "Spa Rood", Description = "Sprankelend water", ImageURL = "kutwater.png", Price = 1, IsDrink = true, IsAvailable = true, ItemID = 7 },
+                new Item() { Name = "Spa Blauw", Description = "Water", ImageURL = "water.png", Price = 1, IsDrink = true, IsAvailable = true , ItemID = 8},
+                new Item() { Name = "Frikandel", Description = "Frikandel", ImageURL = "frikandel.png", Price = 1.7f, IsDrink = false, IsAvailable = true, ItemID = 9 },
+                new Item() { Name = "Frikandel Speciaal", Description = "Frikandel Speciaal", ImageURL = "speciaal.png", Price = 2.1f, IsDrink = false, IsAvailable = true, ItemID = 10 },
+                new Item() { Name = "Kroket", Description = "Kroket", ImageURL = "kroket.png", Price = 1.7f, IsDrink = false, IsAvailable = true, ItemID = 11 },
+                new Item() { Name = "Kaassoufflé", Description = "Kaassoufflé", ImageURL = "kaas.png", Price = 1.85f, IsDrink = false, IsAvailable = true, ItemID = 12 },
+                new Item() { Name = "Bamischijf", Description = "Bamischijf", ImageURL = "bami.png", Price = 1.85f, IsDrink = false, IsAvailable = true, ItemID = 13},
+                new Item() { Name = "Kipnuggets", Description = "Kipnuggets", ImageURL = "nuggets.png", Price = 2.05f, IsDrink = false, IsAvailable = true, ItemID =14 },
+                new Item() { Name = "Hamburger", Description = "Hamburger", ImageURL = "burger.png", Price = 3.55f, IsDrink = false, IsAvailable = true, ItemID = 15 },
+                new Item() { Name = "Cheeseburger", Description = "Cheeseburger", ImageURL = "cburger.png", Price = 4, IsDrink = false, IsAvailable = true, ItemID = 16 }
                 ) ;
 
             modelBuilder.Entity<Extra>().HasData(

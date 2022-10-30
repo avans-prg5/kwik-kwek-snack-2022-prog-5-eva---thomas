@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KwikKwekSnack.Data.Migrations
 {
     [DbContext(typeof(SnackContext))]
-    [Migration("20221030102415_kill-me")]
-    partial class killme
+    [Migration("20221030205301_disableautoinc")]
+    partial class disableautoinc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,6 +92,38 @@ namespace KwikKwekSnack.Data.Migrations
                     b.HasIndex("SnackInOrderOrderID", "SnackInOrderSnackID");
 
                     b.ToTable("Extras");
+
+                    b.HasData(
+                        new
+                        {
+                            Name = "Mayonaise",
+                            Price = 0.15f
+                        },
+                        new
+                        {
+                            Name = "Curry",
+                            Price = 0.15f
+                        },
+                        new
+                        {
+                            Name = "Ketchup",
+                            Price = 0.15f
+                        },
+                        new
+                        {
+                            Name = "Sla",
+                            Price = 0.15f
+                        },
+                        new
+                        {
+                            Name = "Tomaat",
+                            Price = 0.15f
+                        },
+                        new
+                        {
+                            Name = "Kaas",
+                            Price = 0.15f
+                        });
                 });
 
             modelBuilder.Entity("KwikKwekSnack.Data.Item", b =>
@@ -114,10 +146,7 @@ namespace KwikKwekSnack.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("ItemID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemID"), 1L, 1);
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -134,7 +163,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "coke.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 1,
                             Price = 1.5f
                         },
                         new
@@ -144,7 +173,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "fanta.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 2,
                             Price = 1.5f
                         },
                         new
@@ -154,7 +183,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "pepsi.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 3,
                             Price = 1.5f
                         },
                         new
@@ -164,7 +193,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "coke0.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 4,
                             Price = 1.5f
                         },
                         new
@@ -174,7 +203,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "choccy.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 5,
                             Price = 1f
                         },
                         new
@@ -184,7 +213,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "fristi.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 6,
                             Price = 1f
                         },
                         new
@@ -194,7 +223,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "kutwater.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 7,
                             Price = 1f
                         },
                         new
@@ -204,7 +233,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "water.png",
                             IsAvailable = true,
                             IsDrink = true,
-                            ItemID = 0,
+                            ItemID = 8,
                             Price = 1f
                         },
                         new
@@ -214,7 +243,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "frikandel.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 9,
                             Price = 1.7f
                         },
                         new
@@ -224,7 +253,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "speciaal.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 10,
                             Price = 2.1f
                         },
                         new
@@ -234,7 +263,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "kroket.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 11,
                             Price = 1.7f
                         },
                         new
@@ -244,7 +273,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "kaas.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 12,
                             Price = 1.85f
                         },
                         new
@@ -254,7 +283,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "bami.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 13,
                             Price = 1.85f
                         },
                         new
@@ -264,7 +293,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "nuggets.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 14,
                             Price = 2.05f
                         },
                         new
@@ -274,7 +303,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "burger.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 15,
                             Price = 3.55f
                         },
                         new
@@ -284,7 +313,7 @@ namespace KwikKwekSnack.Data.Migrations
                             ImageURL = "cburger.png",
                             IsAvailable = true,
                             IsDrink = false,
-                            ItemID = 0,
+                            ItemID = 16,
                             Price = 4f
                         });
                 });
