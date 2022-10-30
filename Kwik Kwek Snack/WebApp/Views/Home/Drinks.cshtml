@@ -85,9 +85,9 @@
                     <li>
                         @drankje.DrinkName.......@drankje.Amount
                         <ul>
-                            <li>Grootte: @drankje.Size</li>
-                            <li>Ijs: @drankje.Ice</li>
-                            <li>Rietje: @drankje.Straw</li>
+                                                    <li>Grootte: @drankje.Size</li>
+                            @if (drankje.Ice){      <li> Ijs</li>}
+                            @if (drankje.Straw){    <li>Rietje</li>}
                         </ul>
                     </li>
                 }
@@ -100,7 +100,7 @@
                 }
             </ul>
             <h4>Totaal bedrag:
-                <p>@_repo.GetOrderPrice(Model.Order)</p>
+                <p>€@String.Format("{0:0.00}",_repo.GetOrderPrice(Model.Order)).ToString()</p>
             </h4>
         </div>
         <footer class="btn-div">
