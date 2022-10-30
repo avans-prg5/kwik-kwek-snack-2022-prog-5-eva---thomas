@@ -32,7 +32,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Drinks()
         {
-            _currentOrder = _repo.SaveNewOrder(_currentOrder);
+            _repo.SaveNewOrder(_currentOrder);
             TempData["orderid"] = _currentOrder.OrderID;
             DrinkInOrder model = new DrinkInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
             return View(model);
@@ -49,13 +49,9 @@ namespace WebApp.Controllers
 
             _currentOrder = drink.Order;
             _repo.UpdateOrder(_currentOrder);
-            foreach (var newDrink in _currentOrder.Drinks)
-            {
-                newDrink.Drink = _repo.GetItem(newDrink.DrinkId);
-            }
 
-                //New drink
-                DrinkInOrder model = new DrinkInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
+            //New drink
+            DrinkInOrder model = new DrinkInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
             return View(model);
         }
 
@@ -63,40 +59,12 @@ namespace WebApp.Controllers
         public IActionResult Snacks(int orderID)
         {
             _currentOrder = _repo.GetOrder(Int32.Parse(TempData["orderid"].ToString()));
-            TempData["orderid"] = _currentOrder.OrderID;
             SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
             return View(model);
         }
 
         [HttpPost]
-        public RedirectToActionResult Snacks(SnackInOrder snack)
-        {
-            //Setting snack in order
-            /*snack.Snack = _repo.GetItem(snack.SnackName);
-            snack.Order = _repo.GetOrder(snack.OrderID);
-            snack.SnackID = snack.Snack.ItemID;
-            _repo.AddSnackToOrder(snack);
-
-            _currentOrder = snack.Order;
-            _repo.UpdateOrder(_currentOrder);
-
-            //New snack
-            SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };*/
-            return RedirectToAction("SelectedSnack", "Home", snack);
-        }
-
-        [HttpGet]
-        public IActionResult SelectedSnack(SnackInOrder snack)
-        {
-            _currentOrder = _repo.GetOrder(Int32.Parse(TempData["orderid"].ToString()));
-            snack.Snack = _repo.GetItem(snack.SnackName);
-            snack.Order = _currentOrder;
-            snack.OrderID = _currentOrder.OrderID;
-            return View(snack);
-        }
-
-        /*[HttpPost]
-        public RedirectToActionResult SelectedSnack(SnackInOrder snack)
+        public IActionResult Snacks(SnackInOrder snack)
         {
             //Setting snack in order
             snack.Snack = _repo.GetItem(snack.SnackName);
@@ -109,8 +77,8 @@ namespace WebApp.Controllers
 
             //New snack
             SnackInOrder model = new SnackInOrder() { Order = _currentOrder, OrderID = _currentOrder.OrderID };
-            return RedirectToAction("Snacks", "Home", snack);
-        }*/
+            return View(model);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

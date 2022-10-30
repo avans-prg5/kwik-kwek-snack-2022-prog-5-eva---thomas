@@ -129,7 +129,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Coca Cola",
                             Description = "Coca Cola",
-                            ImageURL = "coke.png",
+                            ImageURL = "~/img/coke.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -139,7 +139,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Fanta",
                             Description = "Fanta",
-                            ImageURL = "fanta.png",
+                            ImageURL = "~/img/fanta.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -149,7 +149,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Pepsi",
                             Description = "Pepsi Cola",
-                            ImageURL = "pepsi.png",
+                            ImageURL = "~/img/pepsi.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -159,7 +159,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Coca Cola Zero",
                             Description = "Coca Cola Zero",
-                            ImageURL = "coke0.png",
+                            ImageURL = "~/img/coke0.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -169,7 +169,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Chocomel",
                             Description = "Chocomel",
-                            ImageURL = "choccy.png",
+                            ImageURL = "~/img/choccy.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -179,7 +179,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Fristi",
                             Description = "Fristi",
-                            ImageURL = "fristi.png",
+                            ImageURL = "~/img/fristi.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -189,7 +189,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Spa Rood",
                             Description = "Sprankelend water",
-                            ImageURL = "kutwater.png",
+                            ImageURL = "~/img/kutwater.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -199,7 +199,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Spa Blauw",
                             Description = "Water",
-                            ImageURL = "water.png",
+                            ImageURL = "~/img/water.png",
                             IsAvailable = true,
                             IsDrink = true,
                             ItemID = 0,
@@ -209,7 +209,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Frikandel",
                             Description = "Frikandel",
-                            ImageURL = "frikandel.png",
+                            ImageURL = "~/img/frikandel.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -219,7 +219,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Frikandel Speciaal",
                             Description = "Frikandel Speciaal",
-                            ImageURL = "speciaal.png",
+                            ImageURL = "~/img/speciaal.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -229,7 +229,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Kroket",
                             Description = "Kroket",
-                            ImageURL = "kroket.png",
+                            ImageURL = "~/img/kroket.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -239,7 +239,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Kaassoufflé",
                             Description = "Kaassoufflé",
-                            ImageURL = "kaas.png",
+                            ImageURL = "~/img/kaas.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -249,7 +249,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Bamischijf",
                             Description = "Bamischijf",
-                            ImageURL = "bami.png",
+                            ImageURL = "~/img/bami.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -259,7 +259,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Kipnuggets",
                             Description = "Kipnuggets",
-                            ImageURL = "nuggets.png",
+                            ImageURL = "~/img/nuggets.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -269,7 +269,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Hamburger",
                             Description = "Hamburger",
-                            ImageURL = "burger.png",
+                            ImageURL = "~/img/burger.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
@@ -279,7 +279,7 @@ namespace KwikKwekSnack.Data.Migrations
                         {
                             Name = "Cheeseburger",
                             Description = "Cheeseburger",
-                            ImageURL = "cburger.png",
+                            ImageURL = "~/img/cburger.png",
                             IsAvailable = true,
                             IsDrink = false,
                             ItemID = 0,
