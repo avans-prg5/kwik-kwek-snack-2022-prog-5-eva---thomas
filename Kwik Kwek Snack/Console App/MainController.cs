@@ -1,10 +1,4 @@
 ﻿using KwikKwekSnack.Data;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_App
 {
@@ -24,6 +18,7 @@ namespace Console_App
             _queue = new List<Order>();
             FillQueue();
             _ActiveOrder = PrepareNext();
+            _LastCompeletedOrder = _repo.GetLastCompleted();
             HeartBeat();
         }
 
@@ -64,7 +59,7 @@ namespace Console_App
                 PrepareNext();
                 CH.GenerateVisual(_queue, _ActiveOrder, _LastCompeletedOrder);
                
-                Thread.Sleep(10000);
+                Thread.Sleep(2000);
             }
         }
 

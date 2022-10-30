@@ -45,7 +45,7 @@ namespace KwikKwekSnack.Data
         public Order? GetOrder(int id)
         {
             Order temp = _context.Orders.Where(o => o.OrderID == id).FirstOrDefault();
-            temp.Drinks = GetDrinksInOrder(temp.OrderID);
+                temp.Drinks = GetDrinksInOrder(temp.OrderID);
             temp.Snacks = GetSnacksInOrder(temp.OrderID);
             return temp;
         }
